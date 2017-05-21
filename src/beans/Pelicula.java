@@ -4,11 +4,11 @@ import java.util.List;
 
 public class Pelicula {
 	private int id_pelicula, duracion, numero_votos;
-	private String titulo, fecha, caratula, trailes, actores, directores;
+	private String titulo, fecha, caratula, trailer, actores, directores, sinopsis;
 	private double nota_media;
-	List<String> generos;
+	String generos;
 	public Pelicula(int id_pelicula, int duracion, int numero_votos, String titulo, String fecha, String caratula,
-			String trailes, String actores, String directores, double nota_media, List<String> generos) {
+			String trailer, String actores, String directores, String sinopsis, double nota_media, String generos) {
 		super();
 		this.id_pelicula = id_pelicula;
 		this.duracion = duracion;
@@ -16,14 +16,24 @@ public class Pelicula {
 		this.titulo = titulo;
 		this.fecha = fecha;
 		this.caratula = caratula;
-		this.trailes = trailes;
+		this.trailer = trailer;
 		this.actores = actores;
 		this.directores = directores;
+		this.sinopsis = sinopsis;
 		this.nota_media = nota_media;
 		this.generos = generos;
 	}
 	
 	public Pelicula(){}
+
+	public String getSinopsis() {
+		return sinopsis;
+	}
+
+	public void setSinopsis(String sinopsis) {
+		this.sinopsis = sinopsis;
+	}
+
 
 	public int getId_pelicula() {
 		return id_pelicula;
@@ -73,12 +83,12 @@ public class Pelicula {
 		this.caratula = caratula;
 	}
 
-	public String getTrailes() {
-		return trailes;
+	public String getTrailer() {
+		return trailer;
 	}
 
-	public void setTrailes(String trailes) {
-		this.trailes = trailes;
+	public void setTrailer(String trailer) {
+		this.trailer = trailer;
 	}
 
 	public String getActores() {
@@ -105,11 +115,11 @@ public class Pelicula {
 		this.nota_media = nota_media;
 	}
 
-	public List<String> getGeneros() {
+	public String getGeneros() {
 		return generos;
 	}
 
-	public void setGeneros(List<String> generos) {
+	public void setGeneros(String generos) {
 		this.generos = generos;
 	};
 	

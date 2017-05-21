@@ -4,7 +4,7 @@ public class Usuario {
 	private int id_usuario;
 	private String nombre, email, pass;
 	
-	public Usuario(int id_usuario, String nombre, String email, String pass) {
+	public Usuario(int id_usuario, String nombre, String pass, String email) {
 		super();
 		this.id_usuario = id_usuario;
 		this.nombre = nombre;

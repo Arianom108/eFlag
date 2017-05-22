@@ -72,8 +72,5 @@ CREATE TABLE favoritas(
   
  INSERT INTO peliculas VALUES(null, "La milla verde", "Frank Darabont", "Tom Hanks,  Michael Clarke Duncan,  David Morse,  Doug Hutchison,  Sam Rockwell, Barry Pepper,  Jeffrey DeMunn,  Michael Jeter,  Bonnie Hunt,  James Cromwell, Gary Sinise,  Patricia Clarkson,  Graham Greene,  Harry Dean Stanton, William Sadler,  Paula Malcomson,  Dabbs Greer,  Brian Libby,  Bailey Drucker", 180,"1999-05-19",null, null,"https://pics.filmaffinity.com/the_green_mile-631715339-mmed.jpg", "https://youtu.be/uDybmxbKf4Y", "Drama", "Ambientada en el sur de los Estados Unidos, en plena Depresión. Paul Edgecomb es un funcionario de prisiones encargado de vigilar la Milla Verde, un pasillo que separa las celdas de los reclusos condenados a la silla eléctrica. John Coffey, un gigantesco negro acusado de asesinar brutalmente a dos hermanas de nueve años está esperando su inminente ejecución. Tras una personalidad ingenua e infantil, Coffey esconde un prodigioso don sobrenatural. Cuando se presenta la ocasión de ponerlo en práctica, Edgecomb aprenderá que los milagros existen, incluso en los lugares más insospechados");
  INSERT INTO peliculas VALUES(null, "Pirates of Silicon Valley", "Martyn Burke", "Noah Wyle,  Anthony Michael Hall,  Joey Slotnick,  John Di Maggio,  Josh Hopkins, Melissa McBride,  Gailard Sartain,  Marcus Giamatti", 95,"1999-05-19",null, null,"https://pics.filmaffinity.com/pirates_of_silicon_valley-395977890-mmed.jpg", "https://youtu.be/hbNyIHvzC4s", "Drama", "Dos jóvenes de gran talento se enfrentan en una guerra de ingenio y estrategias comerciales para imponerse en el mercado de la informática. ");	 
-  INSERT INTO favoritas VALUES(1, 1);
- 
- 
- 
- 
+
+  

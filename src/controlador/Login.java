@@ -15,7 +15,7 @@ import beans.Usuario;
 /**
  * Servlet implementation class Login
  */
-@WebServlet("/login")
+@WebServlet("/Login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -37,17 +37,19 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nombre= request.getParameter("user");
+		String email = request.getParameter("email");
 		String pass = request.getParameter("password");
 		Usuario user = new Usuario();
-		user.setNombre(nombre);
+		user.setEmail(email);
 		user.setPass(pass);
-		if(user!=null){
+		Usuario userRecuperado = gestionUsuario.recuperarUsuario(user);
+		
+		if(user.getEmail().equals(userRecuperado.getEmail()) && user.getPass().equals(userRecuperado.getPass())){
 			// Iniciamos sesión
 			HttpSession sesion=request.getSession(true);
 			sesion.setMaxInactiveInterval(120);
 			sesion.setAttribute("usuario",user);
-			response.sendRedirect("MostrarTareas.jsp");
+			response.sendRedirect("index.jsp");
 		}else{
 			String error = "Error de Login";
 			request.setAttribute("error", error);

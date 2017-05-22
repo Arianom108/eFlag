@@ -772,7 +772,16 @@ strong {
   font-size: 1.6em;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
-  justify-content: center; }
+  justify-content: center;
+  text-align: center; }
+  .crear .form {
+    margin: 0 auto;
+    max-width: 800px; }
+    .crear .form input {
+      display: block;
+      width: 300px;
+      border-radius: 5px;
+      border: 3px solid #2A707A; }
 
 /*
 @import '../../framework-duard/library/stickyFooter/scss/stickyFooter';

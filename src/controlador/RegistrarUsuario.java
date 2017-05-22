@@ -23,7 +23,7 @@ public class RegistrarUsuario extends HttpServlet {
      */
     public RegistrarUsuario() {
         super();
-        gestionUsuario = new GestionUsuario()
+        gestionUsuario = new GestionUsuario();
         // TODO Auto-generated constructor stub
     }
 
@@ -44,7 +44,7 @@ public class RegistrarUsuario extends HttpServlet {
 		user.setNombre(nombre);
 		user.setPass(pass);
 		user.setEmail(email);
-		if(gestion.registrarUsuario(user)){
+		if(gestionUsuario.registrarUsuario(user)){
 			response.sendRedirect("index.jsp");
 		}else{
 			response.getWriter().println("No se ha podido registrar el usuario");

@@ -3,6 +3,7 @@ package modelo.DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import beans.Usuario;
@@ -34,7 +35,7 @@ public class FavoritoDAO {
 	}
 	
 	public List<Pelicula> recuperarFavoritos(){
-		List<Pelicula> peliculas = new List<Pelicula>();
+		List<Pelicula> peliculas = new ArrayList<Pelicula>();
 		return null;
 	}
 }

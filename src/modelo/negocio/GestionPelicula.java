@@ -2,19 +2,28 @@ package modelo.negocio;
 
 import java.util.List;
 
-import com.mysql.jdbc.PreparedStatement;
 
 import beans.Pelicula;
 import beans.Usuario;
+import modelo.DAO.FavoritasDAO;
+import modelo.DAO.PeliculaDAO;
 
 public class GestionPelicula {
-	
-	public Pelicula crearPelicula(Pelicula pelicula){
-		//String sql = "INSERT INTO peliculas VALUES (null,?,?,?,null,?,?,?,?,?,null,?)";
-		//PreparedStatement ps = 
-		return null;
+	PeliculaDAO daoPeli;
+	FavoritasDAO daoFavoritas;
+	public GestionPelicula(){
+		daoPeli = new PeliculaDAO();
+	}
+	public boolean crearPelicula(Pelicula pelicula){
+				return daoPeli.crearPelicula(pelicula);
+	}
+	public Pelicula recuperaPelicula(int id){
+		return daoPeli.recuperarPelicula(id);
 	}
 	
+	public boolean eliminarPelicula(int id){
+		return daoPeli.eliminarPelicula(id);
+	}
 	public List<Pelicula> recuperarTodas(){
 		return null;
 	}
@@ -31,8 +40,8 @@ public class GestionPelicula {
 		return null;
 	}
 	
-	public boolean modificarPelicula(int id){
-		return false;
+	public boolean modificarFavoritas(int id, Usuario user){
+		return daoFavoritas.modificarFavorita(id, user);
 	}
 
 }

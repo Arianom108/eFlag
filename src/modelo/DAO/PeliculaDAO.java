@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import beans.Pelicula;
+import beans.Usuario;
 
 public class PeliculaDAO {
 	Connection conexion;
@@ -16,7 +18,33 @@ public class PeliculaDAO {
 	}
 	
 	public List<Pelicula> recuperarPeliculas(){
-		return null;
+		String sql = "SELECT * FROM peliculas";
+		try {
+			PreparedStatement sentencia = conexion.prepareStatement(sql);
+			ResultSet rs =sentencia.executeQuery();
+			List<Pelicula> listaPelis = new ArrayList<Pelicula>();
+			while(rs.next()){
+			   	   int id        = rs.getInt("id_pelicula");
+				   int dura       = rs.getInt("duracion");
+				   int votos	  = rs.getInt("votos");
+				double n_media    = rs.getDouble("nota_media");
+				String f_estreno  = rs.getString("fecha_estreno");
+				String titulo     = rs.getString("titulo");
+				String directores = rs.getString("directores");
+				String actores    = rs.getString("actores");
+				String generos    = rs.getString("generos");
+				String caratula   = rs.getString("caratula");
+				String trailer    = rs.getString("trailer");
+				String sinopsis   = rs.getString("sinopsis");
+				Pelicula peli = new Pelicula( id, dura, votos, titulo, f_estreno, caratula, trailer, actores, directores, sinopsis, n_media, generos);
+				listaPelis.add(peli);
+			}	
+			return listaPelis;
+	    	}catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();	
+		    }
+		    return null;
 	}
 	
 	public boolean crearPelicula(Pelicula pelicula){
@@ -60,7 +88,7 @@ public class PeliculaDAO {
 		return null;
 	}
 	
-	public boolean eliminarPeliculas(int id){
+	public boolean eliminarPelicula(int id){
 		String sql = "DELETE FROM peliculas WHERE id=?";
 		try {
 			PreparedStatement sentencia = conexion.prepareStatement(sql);

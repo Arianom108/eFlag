@@ -44,12 +44,12 @@ public class RegistrarUsuario extends HttpServlet {
 		user.setNombre(nombre);
 		user.setPass(pass);
 		user.setEmail(email);
-		if(gestionUsuario.registrarUsuario(user)){
-			response.sendRedirect("index.jsp");
-		}else{
-			response.getWriter().println("No se ha podido registrar el usuario");
-			response.sendRedirect("index.jsp");
-		}
+//		if(gestionUsuario.registrarUsuario(user)){
+//			response.sendRedirect("index.jsp");
+//		}else{
+//			response.getWriter().println("No se ha podido registrar el usuario");
+//			response.sendRedirect("index.jsp");
+//		}
 	}
 
 }

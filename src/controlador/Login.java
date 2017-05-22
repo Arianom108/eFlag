@@ -51,8 +51,8 @@ public class Login extends HttpServlet {
 			// Iniciamos sesión
 			HttpSession sesion=request.getSession(true);
 			sesion.setMaxInactiveInterval(120);
-			sesion.setAttribute("usuario",user);
-			response.sendRedirect("index.jsp");
+			sesion.setAttribute("usuario",user); 
+			response.sendRedirect("MostrarTareas.jsp");
 		}else{
 			String error = "Error de Login";
 			request.setAttribute("error", error);

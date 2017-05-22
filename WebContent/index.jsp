@@ -31,7 +31,7 @@ color: red;
                     <span class="icon-bar"></span>
                 </div>
                 <div id="login" class="login">
-                    <form id="form" action="login" method="post" class="form">
+                    <form id="form" action="Login" method="post" class="form">
                         <span class="error">
                 <%
                 if( request.getAttribute("error")!= null){

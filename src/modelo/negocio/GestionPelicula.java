@@ -10,8 +10,7 @@ import beans.Usuario;
 public class GestionPelicula {
 	
 	public Pelicula crearPelicula(Pelicula pelicula){
-		//String sql = "INSERT INTO peliculas VALUES (null,?,?,?,null,?,?,?,?,?,null,?)";
-		//PreparedStatement ps = 
+		
 		return null;
 	}
 	

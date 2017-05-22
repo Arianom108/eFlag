@@ -42,19 +42,17 @@ public class PeliculaDAO {
 		return false;
 	}
 	
-	public boolean recuperarPelicula(int id){
+	public Pelicula recuperarPelicula(int id){
 		String sql = "SELECT * FROM peliculas WHERE id=?";
 		try {
 			PreparedStatement sentencia = conexion.prepareStatement(sql);
 			sentencia.setInt(1, id);
 			ResultSet rs = sentencia.executeQuery();
 			if(rs.next()){
-				Pelicula pelicula = new Pelicula(rs.getInt("id_pelicula"), rs.getInt("duracion"), rs.getInt("numero_votos"), rs.getString("titulo"), rs.getString("fecha"), rs.getString("caratula"), rs.getString("trailer"), rs.getString("actores"), rs.getString("directores"), rs.getString("sinopsis"), rs.getDouble("nota_media"), rs.getString("generos"));
-				if(pelicula!=null)
-					return true;
+				return new Pelicula(rs.getInt("id_pelicula"), rs.getInt("duracion"), rs.getInt("numero_votos"), rs.getString("titulo"), rs.getString("fecha"), rs.getString("caratula"), rs.getString("trailer"), rs.getString("actores"), rs.getString("directores"), rs.getString("sinopsis"), rs.getDouble("nota_media"), rs.getString("generos"));
 			}
 			else
-				return false;
+				return null;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

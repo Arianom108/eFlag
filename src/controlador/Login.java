@@ -17,7 +17,7 @@ import modelo.negocio.GestionUsuario;
 /**
  * Servlet implementation class Login
  */
-@WebServlet("/login")
+@WebServlet("/Login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     GestionUsuario gestionUsuario;   
@@ -52,7 +52,7 @@ public class Login extends HttpServlet {
 			HttpSession sesion=request.getSession(true);
 			sesion.setMaxInactiveInterval(120);
 			sesion.setAttribute("usuario",user);
-			response.sendRedirect("MostrarTareas.jsp");
+			response.sendRedirect("index.jsp");
 		}else{
 			String error = "Error de Login";
 			request.setAttribute("error", error);

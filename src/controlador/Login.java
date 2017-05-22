@@ -15,7 +15,7 @@ import beans.Usuario;
 /**
  * Servlet implementation class Login
  */
-@WebServlet("/Login")
+@WebServlet("/login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -47,7 +47,7 @@ public class Login extends HttpServlet {
 			HttpSession sesion=request.getSession(true);
 			sesion.setMaxInactiveInterval(120);
 			sesion.setAttribute("usuario",user);
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("MostrarTareas.jsp");
 		}else{
 			String error = "Error de Login";
 			request.setAttribute("error", error);

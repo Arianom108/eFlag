@@ -63,6 +63,20 @@ public class PeliculaDAO {
 	}
 	
 	public boolean eliminarPeliculas(int id){
+		String sql = "DELETE FROM peliculas WHERE id=?";
+		try {
+			PreparedStatement sentencia = conexion.prepareStatement(sql);
+			sentencia.setInt(1, id);
+			if(sentencia.executeUpdate()>0){
+				return true;
+			}
+			else
+				return false;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 	

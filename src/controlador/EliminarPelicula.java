@@ -6,6 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import modelo.negocio.GestionPelicula;
 
 /**
  * Servlet implementation class EliminarPelicula
@@ -13,12 +16,13 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/EliminarPelicula")
 public class EliminarPelicula extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	GestionPelicula gestor;
     /**
      * @see HttpServlet#HttpServlet()
      */
     public EliminarPelicula() {
         super();
+        gestor = new GestionPelicula();
         // TODO Auto-generated constructor stub
     }
 
@@ -26,16 +30,23 @@ public class EliminarPelicula extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpSession sesion=request.getSession(false);
+		if(sesion == null){
+			response.sendRedirect("index.jsp");
+		}else{
+			int id = Integer.parseInt(request.getParameter("id"));
+			gestor.eliminarPelicuala(id);
+			response.sendRedirect("lista.jsp");
+		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		doGet(request, response);
+
 	}
 
 }

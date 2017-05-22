@@ -57,7 +57,7 @@ public class PeliculaDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return false;
+		return null;
 	}
 	
 	public boolean eliminarPeliculas(int id){

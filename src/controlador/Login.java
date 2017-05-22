@@ -1,11 +1,16 @@
 package controlador;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import beans.Usuario;
 
 /**
  * Servlet implementation class Login
@@ -26,16 +31,29 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+		doPost(request, response);}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String nombre= request.getParameter("user");
+		String pass = request.getParameter("password");
+		Usuario user = new Usuario();
+		user.setNombre(nombre);
+		user.setPass(pass);
+		if(user!=null){
+			// Iniciamos sesión
+			HttpSession sesion=request.getSession(true);
+			sesion.setMaxInactiveInterval(120);
+			sesion.setAttribute("usuario",user);
+			response.sendRedirect("index.jsp");
+		}else{
+			String error = "Error de Login";
+			request.setAttribute("error", error);
+			RequestDispatcher rd =  request.getRequestDispatcher("/index.jsp");
+			rd.forward(request, response);
+			}
 	}
 
 }

@@ -44,6 +44,12 @@ color: red;
                         <input type="text" name="email" placeholder="EMAIL" required tabindex="1">
                         <input type="password" name="password" tabindex="2" placeholder="CONTRASEÑA" required>
                         <br><input tabindex="3" type="submit" value="ENTRAR">
+               <%--    
+                  if(sesion.getAttribute("usuario") != null){
+                	  .is-hide
+                }--%>
+                  
+                  
                         <span><a href="registroPeliculas.html">Registrate</a></span>
                     </form><br>
 

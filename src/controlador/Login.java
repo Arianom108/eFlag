@@ -47,13 +47,21 @@ public class Login extends HttpServlet {
 		user.setPass(pass);
 		Usuario userRecuperado = gestionUsuario.recuperarUsuario(user);
 		
-		if(user.getEmail().equals(userRecuperado.getEmail()) && user.getPass().equals(userRecuperado.getPass())){
-			// Iniciamos sesión
-			HttpSession sesion=request.getSession(true);
-			sesion.setMaxInactiveInterval(120);
-			sesion.setAttribute("usuario",user);
-			response.sendRedirect("index.jsp");
-		}else{
+		if( user.getEmail().equals(userRecuperado.getEmail()) ){
+			if( user.getPass().equals(userRecuperado.getPass())){
+				// Iniciamos sesión
+				HttpSession sesion=request.getSession(true);
+				sesion.setMaxInactiveInterval(120);
+				sesion.setAttribute("usuario",user);
+				response.sendRedirect("index.jsp");
+			}else{
+			String error = "Error de Login";
+			request.setAttribute("error", error);
+			RequestDispatcher rd =  request.getRequestDispatcher("/index.jsp");
+			rd.forward(request, response);
+			}
+		}
+		else{
 			String error = "Error de Login";
 			request.setAttribute("error", error);
 			RequestDispatcher rd =  request.getRequestDispatcher("/index.jsp");

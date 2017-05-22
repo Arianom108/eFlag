@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import beans.Pelicula;
 import modelo.negocio.GestionPelicula;
-import beans.Usuario;
+
 
 
 

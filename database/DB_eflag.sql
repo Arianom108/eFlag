@@ -18,7 +18,8 @@ nota_media NUMERIC(5,3),
 votos INT(3),
 caratula VARCHAR(200) NOT NULL,
 trailer VARCHAR(200) NOT NULL, 
-generos VARCHAR(200) NOT NULL
+generos VARCHAR(200) NOT NULL,
+sinopsis VARCHAR (2000) NOT NULL
 );
 CREATE TABLE favoritas(
  id_pelicula INT(10),
@@ -30,7 +31,7 @@ CREATE TABLE favoritas(
  
  INSERT INTO usuarios VALUES(null, "arian", "arian", "a@mail");
  INSERT INTO usuarios VALUES(null, "fran", "fran", "f@mail");
- INSERT INTO peliculas VALUES(null, "arito", "bebe", "tu@mail", 120,"2017-05-19",null, null,"url", "url", "comedia");
+ INSERT INTO peliculas VALUES(null, "arito", "bebe", "tu@mail", 120,"2017-05-19",null, null,"url", "url", "comedia", "sinopsis");
  INSERT INTO favoritas VALUES(1, 1);
  
  

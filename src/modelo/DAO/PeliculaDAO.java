@@ -106,4 +106,63 @@ public class PeliculaDAO {
 		return false;
 	}
 	
+	public List<Pelicula> recuperarXgenero(){
+		String sql =  "SELECT * FROM peliculas WHERE generos LIKE '%Drama%'";
+		try {
+			PreparedStatement sentencia = conexion.prepareStatement(sql);
+			ResultSet rs =sentencia.executeQuery();
+			List<Pelicula> listaXgenero = new ArrayList<Pelicula>();
+			while(rs.next()){
+			   	   int id        = rs.getInt("id_pelicula");
+				   int dura       = rs.getInt("duracion");
+				   int votos	  = rs.getInt("votos");
+				double n_media    = rs.getDouble("nota_media");
+				String f_estreno  = rs.getString("fecha_estreno");
+				String titulo     = rs.getString("titulo");
+				String directores = rs.getString("directores");
+				String actores    = rs.getString("actores");
+				String generos    = rs.getString("generos");
+				String caratula   = rs.getString("caratula");
+				String trailer    = rs.getString("trailer");
+				String sinopsis   = rs.getString("sinopsis");
+				Pelicula peli = new Pelicula( id, dura, votos, titulo, f_estreno, caratula, trailer, actores, directores, sinopsis, n_media, generos);
+				listaXgenero.add(peli);
+			}	
+			return listaXgenero;
+	    	}catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();	
+		    }
+		    return null;
+	}
+
+	public List<Pelicula> recuperarXnota() {
+		String sql =  "SELECT * FROM peliculas ORDER BY nota_media";
+		try {
+			PreparedStatement sentencia = conexion.prepareStatement(sql);
+			ResultSet rs =sentencia.executeQuery();
+			List<Pelicula> listaXnota = new ArrayList<Pelicula>();
+			while(rs.next()){
+			   	   int id        = rs.getInt("id_pelicula");
+				   int dura       = rs.getInt("duracion");
+				   int votos	  = rs.getInt("votos");
+				double n_media    = rs.getDouble("nota_media");
+				String f_estreno  = rs.getString("fecha_estreno");
+				String titulo     = rs.getString("titulo");
+				String directores = rs.getString("directores");
+				String actores    = rs.getString("actores");
+				String generos    = rs.getString("generos");
+				String caratula   = rs.getString("caratula");
+				String trailer    = rs.getString("trailer");
+				String sinopsis   = rs.getString("sinopsis");
+				Pelicula peli = new Pelicula( id, dura, votos, titulo, f_estreno, caratula, trailer, actores, directores, sinopsis, n_media, generos);
+				listaXnota.add(peli);
+			}	
+			return listaXnota;
+	    	}catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();	
+		    }
+		    return null;
+	}
 }

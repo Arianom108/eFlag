@@ -47,8 +47,9 @@ public class Login extends HttpServlet {
 		user.setPass(pass);
 		Usuario userRecuperado = gestionUsuario.recuperarUsuario(user);
 		
-		if( user.getEmail().equals(userRecuperado.getEmail()) ){
-			if( user.getPass().equals(userRecuperado.getPass())){
+//		if( email.equals(userRecuperado.getEmail()) ){
+//			if( pass.equals(userRecuperado.getPass())){
+	if(user.getEmail().equals(userRecuperado.getEmail() ) && user.getPass().equals(userRecuperado.getPass() )){
 				// Iniciamos sesión
 				HttpSession sesion=request.getSession(true);
 				sesion.setMaxInactiveInterval(120);
@@ -60,7 +61,7 @@ public class Login extends HttpServlet {
 			RequestDispatcher rd =  request.getRequestDispatcher("/index.jsp");
 			rd.forward(request, response);
 			}
-		}
+		
 		
 	}
 

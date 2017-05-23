@@ -1,6 +1,8 @@
 package controlador;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,8 +41,10 @@ public class RecuperarPelicula extends HttpServlet {
 		}else{
 			int id = Integer.parseInt(request.getParameter("id"));
 			Pelicula pelicula = gestor.recuperaPelicula(id);
-			response.getWriter().append("Pelicula: ").append(pelicula.toString());
-			response.sendRedirect("lista.jsp");
+			
+			request.setAttribute("pelicula", pelicula);
+			RequestDispatcher rd = request.getRequestDispatcher("Peliculas.jsp");
+			rd.forward(request, response);		
 		}
 	}
 

@@ -1,6 +1,8 @@
 package controlador;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,7 +39,7 @@ public class CrearPelicula extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	}	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -56,11 +58,7 @@ public class CrearPelicula extends HttpServlet {
 			String fecha = request.getParameter("fecha");
 			String caratula= request.getParameter("caratula");
 			String trailer = request.getParameter("trailer");
-			String[] generos= request.getParameterValues("ck1");
-			String cadena=" ";
-			for (int x=0;x<generos.length;x++){
-				cadena+=','+ generos[x];
-				}
+			String generos= request.getParameter("generos");
 			String sinopsis = request.getParameter("sinopsis");
 		
 			
@@ -72,17 +70,21 @@ public class CrearPelicula extends HttpServlet {
 			peli.setFecha(fecha);
 			peli.setCaratula(caratula);
 			peli.setTrailer(trailer);
-			peli.setGeneros(cadena);
+			peli.setGeneros(generos);
 			peli.setSinopsis(sinopsis);
-			gestor.crearPelicula(peli);		
-			response.sendRedirect("lista.jsp");
+			 if(gestor.crearPelicula(peli)){			
+				RequestDispatcher rd = request.getRequestDispatcher("Lista.jsp");
+				rd.forward(request, response);	
+			}else{
+				RequestDispatcher rd = request.getRequestDispatcher("Lista.jsp");
+				rd.forward(request, response);	
 			}
 		
 		else{
 				
 				response.sendRedirect("index.jsp");
 			}
-		}}
+		}
 		
 		
 		

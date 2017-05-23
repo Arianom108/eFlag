@@ -5,7 +5,7 @@
 /* Large devices (large desktops, 1200px and up) */
 /* TEMA = constants : (colores, estilos, fuentes) */
 /* MODULOS = (botones, iconos, widget):varibles @mixin.., @extend... */
-.shadow, .movies-item, .movies-item .eye, .movies-item-detail {
+.shadow, .movies-item, .movies-item .eye, .movies-item-detail, .movie-image, .movie-text, .trailer .movie-meta {
   box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.4), 0 6px 40px 0 rgba(0, 0, 0, 0.29); }
 
 .heigthBg {
@@ -806,6 +806,7 @@ strong {
       color: #2A707A; }
 
 /*
+>>>>>>> 2a6ac7d3e2bb1449e6cd59c8d90bd8e11c4d23c1
 @import '../../framework-duard/library/stickyFooter/scss/stickyFooter';
 body,
 h1,

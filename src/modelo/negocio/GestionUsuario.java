@@ -1,7 +1,6 @@
 package modelo.negocio;
 
 import beans.Usuario;
-import dao.UsuarioDao;
 import modelo.DAO.UsuarioDAO;
 
 public class GestionUsuario {

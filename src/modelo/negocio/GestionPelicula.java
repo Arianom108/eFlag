@@ -10,7 +10,7 @@ import modelo.DAO.PeliculaDAO;
 
 public class GestionPelicula {
 	PeliculaDAO daoPeli;
-	FavoritasDAO daoFavoritas;
+	
 	public GestionPelicula(){
 		daoPeli = new PeliculaDAO();
 	}
@@ -27,21 +27,16 @@ public class GestionPelicula {
 	public List<Pelicula> recuperarTodas(){
 		return null;
 	}
-	
-	public List<Pelicula> recuperarFavoritas(Usuario usuario){
-		return null;
+		
+	public List<Pelicula> recuperarXgenero(String genero){
+		return daoPeli.recuperarXgenero();
 	}
 	
-	public List<Pelicula> recuperarXGenero(String genero){
-		return null;
+	public List<Pelicula> recuperarXnota(){
+		return daoPeli.recuperarXnota();
 	}
 	
-	public List<Pelicula> recuperarXNota(){
-		return null;
-	}
 	
-	public boolean modificarFavoritas(int id, Usuario user){
-		return daoFavoritas.modificarFavorita(id, user);
-	}
+	
 
 }

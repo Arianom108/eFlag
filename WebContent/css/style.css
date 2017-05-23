@@ -610,7 +610,7 @@ a.registre {
       box-sizing: border-box;
       position: absolute;
       top: 0;
-      line-height: 80px;
+      line-height: 40px;
       left: 0;
       z-index: 100;
       width: 100%;
@@ -647,14 +647,14 @@ a.registre {
     .movies-item-detail {
       background-color: #2A707A;
       color: #fff;
-      font-size: 1.2em;
+      font-size: 0.8em;
       font-family: "Kanit", sans-serif;
       line-height: 20px; }
       .movies-item-detail .detail {
         padding: 10px 10px 10px 30px; }
       .movies-item-detail span {
         font-family: "Open Sans Condensed", sans-serif;
-        font-size: 1.2em; }
+        font-size: 0.8em; }
       .movies-item-detail .votar {
         left: 0;
         border-top: 2px solid #fff;

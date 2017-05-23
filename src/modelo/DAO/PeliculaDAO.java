@@ -96,13 +96,13 @@ public class PeliculaDAO {
 	}
 	
 	public Pelicula recuperarPelicula(int id){
-		String sql = "SELECT * FROM peliculas WHERE id=?";
+		String sql = "SELECT * FROM peliculas WHERE id_pelicula=?";
 		try {
 			PreparedStatement sentencia = conexion.prepareStatement(sql);
 			sentencia.setInt(1, id);
 			ResultSet rs = sentencia.executeQuery();
 			if(rs.next()){
-				return new Pelicula(rs.getInt("id_pelicula"), rs.getInt("duracion"), rs.getInt("numero_votos"), rs.getString("titulo"), rs.getString("fecha"), rs.getString("caratula"), rs.getString("trailer"), rs.getString("actores"), rs.getString("directores"), rs.getString("sinopsis"), rs.getDouble("nota_media"), rs.getString("generos"));
+				return new Pelicula(rs.getInt("id_pelicula"), rs.getInt("duracion"), rs.getInt("votos"), rs.getString("titulo"), rs.getString("fecha_estreno"), rs.getString("caratula"), rs.getString("trailer"), rs.getString("actores"), rs.getString("directores"), rs.getString("sinopsis"), rs.getDouble("nota_media"), rs.getString("generos"));
 			}
 			else
 				return null;

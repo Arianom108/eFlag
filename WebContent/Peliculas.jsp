@@ -137,13 +137,13 @@
 					}
 				}%>"
 							aria-hidden="true"></i></a> <a
-							href="RecuperarPelicula?id=<%=l.getId_pelicula()%>">SUPERMAN</a>
+							href="RecuperarPelicula?id=<%=l.getId_pelicula()%>"><%=l.getTitulo() %></a>
 					</div>
 					<a class="eye" href="RecuperarPelicula?id=<%=l.getId_pelicula()%>">Ver</a>
 					<div class="movies-item-detail">
 						<div class="detail">
-							valoracion: <span>=<%=l.getNota_media()%></span> <br>
-							genero: <span>=<%=l.getGeneros()%></span> <br> año: <span>=<%=l.getFecha()%></span>
+							valoracion: <span><%=l.getNota_media()%></span> <br>
+							genero: <span><%=l.getGeneros()%></span> <br> año: <span><%=l.getFecha()%></span>
 						</div>
 						<form class="votar <%=(user != null) ? " " : "isHide"%>"
 							action="VotarPelicula?id=<%=l.getId_pelicula()%>" method="post">

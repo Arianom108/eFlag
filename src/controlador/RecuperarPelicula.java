@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.Pelicula;
+import beans.*;
 import modelo.negocio.GestionPelicula;
 
 /**
@@ -19,41 +19,45 @@ import modelo.negocio.GestionPelicula;
 @WebServlet("/RecuperarPelicula")
 public class RecuperarPelicula extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	GestionPelicula gestor;  
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public RecuperarPelicula() {
-        super();
-        // TODO Auto-generated constructor stub
-        gestor = new GestionPelicula();
-    }
+	GestionPelicula gestor;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		HttpSession sesion=request.getSession(false);
-		if(sesion == null){
-			response.sendRedirect("index.jsp");
-		}else{
-			int id = Integer.parseInt(request.getParameter("id"));
-			Pelicula pelicula = gestor.recuperaPelicula(id);
-			
-			request.setAttribute("pelicula", pelicula);
-			RequestDispatcher rd = request.getRequestDispatcher("Peliculas.jsp");
-			rd.forward(request, response);		
-		}
+	public RecuperarPelicula() {
+		super();
+		// TODO Auto-generated constructor stub
+		gestor = new GestionPelicula();
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		// response.getWriter().append("Served at:
+		// ").append(request.getContextPath());
+		//HttpSession sesion = request.getSession(false);
+		//Usuario user = (Usuario) sesion.getAttribute("usuario");
+		int id = Integer.parseInt(request.getParameter("id"));
+		Pelicula pelicula = gestor.recuperaPelicula(id);
+		//sesion.setAttribute("usuario", user);
+		request.setAttribute("pelicula", pelicula);
+		RequestDispatcher rd = request.getRequestDispatcher("detalle.jsp");
+		rd.forward(request, response);
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+
 		doGet(request, response);
 	}
 

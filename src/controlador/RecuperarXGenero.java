@@ -42,7 +42,7 @@ public class RecuperarXGenero extends HttpServlet {
 			String genero = request.getParameter("generos");
 		
 				List<Pelicula> peliculasXGenero = gestor.recuperarXgenero(genero);
-				request.setAttribute("peliculasXGenero", peliculasXGenero);
+				request.setAttribute("lista", peliculasXGenero);
 				RequestDispatcher rd = request.getRequestDispatcher("Peliculas.jsp");
 				rd.forward(request, response);		
 		}

@@ -42,7 +42,7 @@ public class RecuperarXNota extends HttpServlet {
 			String nota = request.getParameter("nota");
 			List<Pelicula> peliculasXNota = gestor.recuperarXnota();
 			
-			request.setAttribute("peliculasXNota", peliculasXNota);
+			request.setAttribute("lista", peliculasXNota);
 			RequestDispatcher rd = request.getRequestDispatcher("Peliculas.jsp");
 			rd.forward(request, response);					
 		}

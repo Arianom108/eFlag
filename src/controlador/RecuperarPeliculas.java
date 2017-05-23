@@ -44,7 +44,7 @@ public class RecuperarPeliculas extends HttpServlet {
 		}else{
 			
 			List<Pelicula> peliculas = gestor.recuperarTodas();
-			request.setAttribute("peliculas", peliculas);
+			request.setAttribute("lista", peliculas);
 			RequestDispatcher rd = request.getRequestDispatcher("Peliculas.jsp");
 			rd.forward(request, response);		
 		}

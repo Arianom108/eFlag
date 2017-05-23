@@ -1,7 +1,5 @@
 package beans;
 
-import java.util.List;
-
 public class Pelicula {
 	private int id_pelicula, duracion, numero_votos;
 	private String titulo, fecha, caratula, trailer, actores, directores, sinopsis;

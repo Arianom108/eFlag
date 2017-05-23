@@ -1,6 +1,7 @@
 package controlador;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -55,22 +56,28 @@ public class CrearPelicula extends HttpServlet {
 			String directores = request.getParameter("directores");
 			String actores = request.getParameter("actores");
 			int duracion= Integer.parseInt(request.getParameter("duracion"));
-			String fecha = request.getParameter("fecha");
+			//Date fecha = request.getParameter("fecha");
 			String caratula= request.getParameter("caratula");
 			String trailer = request.getParameter("trailer");
-			String generos= request.getParameter("generos");
+			String[] generos= request.getParameterValues("chk1");
 			String sinopsis = request.getParameter("sinopsis");
-		
+			Date date = new Date();
+			System.out.println(date.toString());
+
 			
 			Pelicula  peli = new Pelicula();
 			peli.setTitulo(titulo);
 			peli.setDirectores(directores);
 			peli.setActores(actores);
 			peli.setDuracion(duracion);
-			peli.setFecha(fecha);
+			//peli.setFecha(fecha);
 			peli.setCaratula(caratula);
 			peli.setTrailer(trailer);
-			peli.setGeneros(generos);
+			String cadena="";
+			  for(int i=0; i<generos.length; i++){
+			      cadena+=generos[i];
+			   }			    
+	  		peli.setGeneros(cadena);
 			peli.setSinopsis(sinopsis);
 			 if(gestor.crearPelicula(peli)){			
 				RequestDispatcher rd = request.getRequestDispatcher("Lista.jsp");

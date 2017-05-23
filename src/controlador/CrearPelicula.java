@@ -56,7 +56,11 @@ public class CrearPelicula extends HttpServlet {
 			String fecha = request.getParameter("fecha");
 			String caratula= request.getParameter("caratula");
 			String trailer = request.getParameter("trailer");
-			String generos= request.getParameter("generos");
+			String[] generos= request.getParameterValues("ck1");
+			String cadena=" ";
+			for (int x=0;x<generos.length;x++){
+				cadena+=','+ generos[x];
+				}
 			String sinopsis = request.getParameter("sinopsis");
 		
 			
@@ -68,9 +72,9 @@ public class CrearPelicula extends HttpServlet {
 			peli.setFecha(fecha);
 			peli.setCaratula(caratula);
 			peli.setTrailer(trailer);
-			peli.setGeneros(generos);
+			peli.setGeneros(cadena);
 			peli.setSinopsis(sinopsis);
-			gestor.crearPelicula(peli);
+			gestor.crearPelicula(peli);		
 			response.sendRedirect("lista.jsp");
 			}
 		

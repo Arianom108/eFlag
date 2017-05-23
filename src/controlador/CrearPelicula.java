@@ -80,12 +80,12 @@ public class CrearPelicula extends HttpServlet {
 				rd.forward(request, response);	
 			}
 		
-		else{
+		}else{
 				
 				response.sendRedirect("index.jsp");
-			}
 		}
-		
+	}
+}
 		
 		
 		

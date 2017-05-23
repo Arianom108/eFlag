@@ -41,7 +41,7 @@ public class UsuarioDAO {
 			sentencia.setString(1, usuario.getEmail());
 			ResultSet rs = sentencia.executeQuery();
 			if(rs.next()){
-				return new Usuario(rs.getInt("id_usuario"), rs.getString("nombre"),  rs.getString("email"),  rs.getString("password") );
+				return new Usuario(rs.getInt("id_usuario"), rs.getString("nombre"), rs.getString("password"),  rs.getString("email")   );
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

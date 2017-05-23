@@ -44,21 +44,20 @@ public class Login extends HttpServlet {
 		Usuario user = new Usuario();
 		user.setEmail(email);
 		user.setPass(pass);
-		Usuario userRecuperado = gestionUsuario.recuperarUsuario(user);
-		
 
 		user = gestionUsuario.logarUsuario(user);
 		if(user!=null){
 			HttpSession sesion=request.getSession(true);
 			sesion.setMaxInactiveInterval(120);
 			sesion.setAttribute("usuario",user);
-			response.sendRedirect("index.jsp");
+			RequestDispatcher rd =  request.getRequestDispatcher("/index.jsp");
+			rd.forward(request, response);
 		}
 		else{
 
 			String error = "Error de Login";
 			request.setAttribute("error", error);
-			RequestDispatcher rd =  request.getRequestDispatcher("/login.jsp");
+			RequestDispatcher rd =  request.getRequestDispatcher("/index.jsp");
 			rd.forward(request, response);
 			}
 	}

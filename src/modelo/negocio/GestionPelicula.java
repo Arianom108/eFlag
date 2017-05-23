@@ -25,7 +25,7 @@ public class GestionPelicula {
 		return daoPeli.eliminarPelicula(id);
 	}
 	public List<Pelicula> recuperarTodas(){
-		return null;
+		return daoPeli.recuperarPeliculas();
 	}
 		
 	public List<Pelicula> recuperarXgenero(String genero){

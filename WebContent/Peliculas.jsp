@@ -1,16 +1,20 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
- <%@ page import="beans.*"%>
- <%@ page import="modelo.*"%>
+<%@ page import="beans.* " session="false"%>
+<%@ page import="modelo.negocio.*, java.util.*"%>
 <!DOCTYPE html PUBLIC "//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>eFLag | Movies Online</title>
-   
-    <meta name='viewport' content='width=devicewidth, initialscale=1'>
-    <link rel='icon' type='image/png' sizes='16x16' href='image/icon/favicon.ico'>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js '></script>
-    <link href="https://fonts.googleapis.com/css?family=Kanit|OpenSansCondensed:300i|Orbitron:500" rel="stylesheet">
-    <link href='css/style.css' rel='stylesheet'>
+
+<meta name='viewport' content='width=devicewidth, initialscale=1'>
+<link rel='icon' type='image/png' sizes='16x16'
+	href='image/icon/favicon.ico'>
+<script
+	src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js '></script>
+<link
+	href="https://fonts.googleapis.com/css?family=Kanit|OpenSansCondensed:300i|Orbitron:500"
+	rel="stylesheet">
+<link href='css/style.css' rel='stylesheet'>
 
 </head>
 <body>
@@ -19,7 +23,7 @@
 		<div id="header" class="header heigthBg">
 			<div class="header-bar">
 				<div class="logo">
-					<a href="index.html"> <!--<img src="./images/logo_texto.png" width="100%" alt="">-->eFlag
+					<a href="index.jsp"> <!--<img src="./images/logo_texto.png" width="100%" alt="">-->eFlag
 					</a>
 				</div>
 				<div id="burger" class="burger">
@@ -27,40 +31,59 @@
 						class="icon-bar"></span>
 				</div>
 				<%
-					Usuario user = null;
-					HttpSession session = request.getSession(false);
-					if (session == null) {
-						response.sendRedirect("index.jsp");
-					} else {
-						user = (Usuario) session.getAttribute("user");
-						//out.println(user.getNombre());
+					if (request.getAttribute("error") != null) {
+						String error = (String) request.getAttribute("error");
+				%>
+				<%=error%>
+				<%
 					}
 				%>
+				<%
+					Usuario user = null;
+					HttpSession session = request.getSession(false);
+					if (session != null) {
+						user = (Usuario) session.getAttribute("usuario");
+						//out.println(user.getNombre());
+				%>
+
 				<div id="login" class="login">
 					<%
-						if (user != null) {
-							out.println("Hola "  user.getNombre());
-						} else {
+						out.println("Hola " + user.getNombre());
 					%>
-					<form id="form" action="login" method="post"
-						class="form <%out.println("isHide");	%>">
-						<input type="text" name="user" placeholder="USUARIO" required
+					<form id="form" action="Login" method="post"
+						class="form <%out.println("isHide");%>">
+						<input type="text" name="email" placeholder="CORREO" required
 							tabindex="1"> <input type="password" name="password"
 							tabindex="2" placeholder="CONTRASEÑA" required> <br>
 						<input tabindex="3" type="submit" value="ENTRAR">
 					</form>
-					<%} %>
-					<br> <a href="registro.html" class="registre">Registrate</a>
+					<%
+						} else {
+					%>
+					<div id="login" class="login">
 
-               </div>
-			</div>
-			<div id="main" class="header-main">
-				<div class="box">
-					<h1>MOVIES eFLAG</h1>
-					<p>las mejores peliculas del mundopeliculas del mundo</p>
-					<a href="peliculas.html" class="btnMovies">Lista de peliculas</a>
-					 <a	href="crear.html" class="btnMovies <%=(user!=null?" ":"isHide")%>">Crear</a>
-					<!-- <a href="peliculas.html" class="btnMovies">Lista de peliculas</a>-->
+						<form id="form" action="Login" method="post" class="form">
+							<input type="text" name="email" placeholder="CORREO" required
+								tabindex="1"> <input type="password" name="password"
+								tabindex="2" placeholder="CONTRASEÑA" required> <br>
+							<input tabindex="3" type="submit" value="ENTRAR">
+						</form>
+						<%
+							}
+						%>
+						<br> <a href="Registro.jsp" class="registre">Registrate</a>
+
+					</div>
+				</div>
+				<div id="main" class="header-main">
+					<div class="box">
+						<h1>MOVIES eFLAG</h1>
+						<p>las mejores peliculas del mundopeliculas del mundo</p>
+						<a href="Peliculas.jsp" class="btnMovies">Lista de peliculas</a>
+						<a href="CrearPelicula.jsp"
+							class="btnMovies <%=(user != null ? " " : "isHide")%>">Crear</a>
+						<!-- <a href="peliculas.html" class="btnMovies">Lista de peliculas</a>-->
+					</div>
 				</div>
 			</div>
 		</div>
@@ -85,9 +108,16 @@
 			</div>
 			<div class="movies">
 				<%
+					List<Pelicula> listFavorites = null;
 					GestionPelicula gestorPelicula = new GestionPelicula();
-					List<Pelicula> list = (ArrayList<Pelicula>) request.getAttribute("list");
-					List<Pelicula> listFavorites = gestorPelicula.recuperarFavoritas(user);
+					GestionFavoritas gestorFavoritas = new GestionFavoritas();
+					List<Pelicula> list = (ArrayList<Pelicula>) request.getAttribute("lista");
+					if (user != null) {
+						listFavorites = gestorFavoritas.recuperarFavoritas(user);
+					}
+					if (list == null) {
+						list = gestorPelicula.recuperarTodas();
+					}
 					for (Pelicula l : list) {
 				%>
 				<div class="movies-item">
@@ -99,23 +129,25 @@
 						<a class="<%=(user != null) ? " " : "isHide"%>"
 							href="MarcarDesmarcarFavorito?id=<%=l.getId_pelicula()%>"> <i
 							class="fa fa-star fa-2x 
-							<%
-							for (Pelicula p : listFavorites) {
-								if(p.getId_pelicula()==l.getId_pelicula()){
-									out.println("isFavorite");
-								}
-							}		%>"	aria-hidden="true"></i></a>
-							<a href="RecuperarPelicula?id=<%=l.getId_pelicula()%>">SUPERMAN</a>
+							<%if (user != null) {
+					for (Pelicula p : listFavorites) {
+						if (p.getId_pelicula() == l.getId_pelicula()) {
+							out.println("isFavorite");
+						}
+					}
+				}%>"
+							aria-hidden="true"></i></a> <a
+							href="RecuperarPelicula?id=<%=l.getId_pelicula()%>">SUPERMAN</a>
 					</div>
 					<a class="eye" href="RecuperarPelicula?id=<%=l.getId_pelicula()%>">Ver</a>
-<div class="movies-item-detail">
+					<div class="movies-item-detail">
 						<div class="detail">
 							valoracion: <span>=<%=l.getNota_media()%></span> <br>
 							genero: <span>=<%=l.getGeneros()%></span> <br> año: <span>=<%=l.getFecha()%></span>
 						</div>
 						<form class="votar <%=(user != null) ? " " : "isHide"%>"
 							action="VotarPelicula?id=<%=l.getId_pelicula()%>" method="post">
-							<span>Votar</span> <select name="votar" >
+							<span>Votar</span> <select name="votar">
 								<option value="0">0</option>
 								<option value="1">1</option>
 								<option value="2">2</option>
@@ -144,11 +176,11 @@
 		</div>
 	</div>
 	<footer class="footer">
-	 	 <div class="footer-box">
-			by development <span>&</span> design eFlag 2017
-		 </div>
+	<div class="footer-box">
+		by development <span>&</span> design eFlag 2017
+	</div>
 	</footer>
-<!-- FUENTE DE ICONOS DE FONTAWESOME -->
+	<!-- FUENTE DE ICONOS DE FONTAWESOME -->
 	<script async type='text/javascript'
 		src='https://use.fontawesome.com/493ef35f7a.js'></script>
 	<!-- HOJA DE JAVASCRIPT -->

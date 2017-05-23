@@ -30,26 +30,37 @@ color: red;
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </div>
-                <div id="login" class="login">
-                    <form id="form" action="Login" method="post" class="form">
-                        <span class="error">
-                <%
+                   <%
                 if( request.getAttribute("error")!= null){
                 String error =(String) request.getAttribute("error");         
                 %>
                 <%= error %>
                 <%} %>
+                <%
+					Usuario user = null;
+					HttpSession session = request.getSession(false);
+					if (session == null) {
+						response.sendRedirect("index.jsp");
+					} else {
+						user = (Usuario) session.getAttribute("user");
+						//out.println(user.getNombre());
+					}
+				%>
                 
-                </span>
-                        <input type="text" name="email" placeholder="EMAIL" required tabindex="1">
-                        <input type="password" name="password" tabindex="2" placeholder="CONTRASEÑA" required>
-                        <br><input tabindex="3" type="submit" value="ENTRAR">
-               <%--    
-                  if(sesion.getAttribute("usuario") != null){
-                	  .is-hide
-                }--%>
-                  
-                  
+                <div id="login" class="login">
+                    <%
+						if (user != null) {
+							out.println("Hola "  user.getNombre());
+						} else {
+					%>
+					<form id="form" action="login" method="post"
+						class="form <%out.println("isHide");	%>">
+						<input type="text" name="user" placeholder="USUARIO" required
+							tabindex="1"> <input type="password" name="password"
+							tabindex="2" placeholder="CONTRASEÑA" required> <br>
+						<input tabindex="3" type="submit" value="ENTRAR">
+					</form>
+					<%} %>
                         <span><a href="registroPeliculas.html">Registrate</a></span>
                     </form><br>
 

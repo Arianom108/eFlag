@@ -46,20 +46,9 @@ public class Login extends HttpServlet {
 		Usuario user = new Usuario();
 		user.setEmail(email);
 		user.setPass(pass);
-<<<<<<< HEAD
 		Usuario userRecuperado = gestionUsuario.recuperarUsuario(user);
 		
-//		if( email.equals(userRecuperado.getEmail()) ){
-//			if( pass.equals(userRecuperado.getPass())){
-	if(user.getEmail().equals(userRecuperado.getEmail() ) && user.getPass().equals(userRecuperado.getPass() )){
-				// Iniciamos sesión
-				HttpSession sesion=request.getSession(true);
-				sesion.setMaxInactiveInterval(120);
-				sesion.setAttribute("usuario",user);
-				response.sendRedirect("index.jsp");
-			}else{
-=======
-		//Usuario userRecuperado = gestionUsuario.recuperarUsuario(user);
+
 		user = gestionUsuario.logarUsuario(user);
 		if(user!=null){
 			HttpSession sesion=request.getSession(true);
@@ -68,15 +57,13 @@ public class Login extends HttpServlet {
 			response.sendRedirect("index.jsp");
 		}
 		else{
->>>>>>> 65d679f6c4dc69cfb774c2f11aa5bada88099f0a
+
 			String error = "Error de Login";
 			request.setAttribute("error", error);
 			RequestDispatcher rd =  request.getRequestDispatcher("/login.jsp");
 			rd.forward(request, response);
 			}
-<<<<<<< HEAD
-				
-=======
+	}
 		
 		//if( email.equals(userRecuperado.getEmail()) ){
 			//System.out.println("Emails iguales");
@@ -95,7 +82,7 @@ public class Login extends HttpServlet {
 			//}
 		
 		
->>>>>>> 65d679f6c4dc69cfb774c2f11aa5bada88099f0a
+
 	}
 
 }

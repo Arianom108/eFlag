@@ -17,6 +17,30 @@ public class PeliculaDAO {
 		this.conexion = AgenteConexion.getAgente().conexion;
 	}
 	
+	public boolean votarPelicula(int id, int n){
+		PeliculaDAO daoPeli = new PeliculaDAO();
+		Pelicula peli = daoPeli.recuperarPelicula(id);
+		int v =peli.getNumero_votos();
+		double m =peli.getNota_media();
+	
+		m = (m*v+n)/(v+1);
+
+		String sql = "UPDATE peliculas SET numero_votos='"+(v+1)+"', nota_media='"+m+"' WHERE id=?";
+			try {
+				PreparedStatement sentencia = conexion.prepareStatement(sql);
+				sentencia.setInt(1, id);
+				if(sentencia.executeUpdate()>0){
+					return true;
+				}
+				else
+					return false;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
+    		return false;
+	}
+	
 	public List<Pelicula> recuperarPeliculas(){
 		String sql = "SELECT * FROM peliculas";
 		try {

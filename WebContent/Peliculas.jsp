@@ -94,7 +94,7 @@
 						<% if(user!=null){ %>
 						<option name="Favoritas" value="Favoritas">Favoritas</option>
 						<%} %> 
-						<option name="Todas" value="todas">Todas</option>
+						<option name="Todas" value="Todas">Todas</option>
 						<option name="Animación" value="animacion">Animación</option>
 						<option name="Aventuras" value="aventuras">Aventuras</option>
 						<option name="Comedia" value="comedia">Comedia</option>
@@ -105,8 +105,8 @@
 						<option name="Romántica" value="romantica">Romántica</option>
 						<option name="Histórica" value="historica">Histórica</option>
 						<option name="Corto" value="corto">Corto</option>
-<!-- 						<option name="Favorito" value="Favorito">Favoritos</option> -->
 						<option name="Populares" value="populares">Populares</option>
+						<option name="Notas" value="Notas">Por nota</option>
 					</select> <input type="submit" value="Busqueda">
 				</form>
 			</div>

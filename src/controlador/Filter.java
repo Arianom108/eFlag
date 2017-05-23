@@ -67,6 +67,11 @@ public class Filter extends HttpServlet {
 			request.setAttribute("lista", todas);
 			rd.forward(request, response);
 			break;
+		case "Notas":
+			todas = gestion.recuperarXnota();
+			request.setAttribute("lista", todas);
+			rd.forward(request, response);
+			break;
 		default:
 			todas = gestion.recuperarXgenero(genero);
 			request.setAttribute("lista", todas);

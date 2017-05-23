@@ -150,7 +150,8 @@
 							genero: <span><%=l.getGeneros()%></span> <br> año: <span><%=l.getFecha()%></span>
 						</div>
 						<form class="votar <%=(user != null) ? " " : "isHide"%>"
-							action="VotarPelicula?id=<%=l.getId_pelicula()%>" method="post">
+							action="VotarPelicula" method="post">
+							<input type="hidden" name="id" value="<%=l.getId_pelicula()%>">
 							<span>Votar</span> <select name="votar">
 								<option value="0">0</option>
 								<option value="1">1</option>

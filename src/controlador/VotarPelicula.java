@@ -47,7 +47,12 @@ public class VotarPelicula extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//doGet(request, response);
+		int  numVotos= Integer.parseInt(request.getParameter("votar"));
+		int idPelicula = Integer.parseInt(request.getParameter("id"));
+		gestorPeliculas.votarPelicula(idPelicula, numVotos);
+		RequestDispatcher rd = request.getRequestDispatcher("Peliculas.jsp");
+		rd.forward(request, response);	
 	}
 
 }

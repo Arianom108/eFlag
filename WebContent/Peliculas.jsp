@@ -91,18 +91,22 @@
 			<div class="filter">
 				<form id="filter" action="filter" class="filter-form" method="post">
 					Realiza un Busqueda <select name="genero">
-						<option name="Animación" value="Animación">Animación</option>
-						<option name="Aventuras" value="Aventuras">Aventuras</option>
-						<option name="Comedia" value="Comedia">Comedia</option>
-						<option name="Acción" value="Acción">Acción</option>
-						<option name="Drama" value="Drama">Drama</option>
-						<option name="Terror" value="Terror">Terror</option>
-						<option name="Ficción" value="Ficción">Ciencia Ficción</option>
-						<option name="Romántica" value="Romántica">Romántica</option>
-						<option name="Histórica" value="Histórica">Histórica</option>
-						<option name="Corto" value="Corto">Corto</option>
-						<option name="Favorito" value="Favorito">Favoritos</option>
-						<option name="Populares" value="Populares">Populares</option>
+						<% if(user!=null){ %>
+						<option name="Favoritas" value="Favoritas">Favoritas</option>
+						<%} %> 
+						<option name="Todas" value="todas">Todas</option>
+						<option name="Animación" value="animacion">Animación</option>
+						<option name="Aventuras" value="aventuras">Aventuras</option>
+						<option name="Comedia" value="comedia">Comedia</option>
+						<option name="Acción" value="accion">Acción</option>
+						<option name="Drama" value="drama">Drama</option>
+						<option name="Terror" value="terror">Terror</option>
+						<option name="Ficción" value="ficcion">Ciencia Ficción</option>
+						<option name="Romántica" value="romantica">Romántica</option>
+						<option name="Histórica" value="historica">Histórica</option>
+						<option name="Corto" value="corto">Corto</option>
+<!-- 						<option name="Favorito" value="Favorito">Favoritos</option> -->
+						<option name="Populares" value="populares">Populares</option>
 					</select> <input type="submit" value="Busqueda">
 				</form>
 			</div>

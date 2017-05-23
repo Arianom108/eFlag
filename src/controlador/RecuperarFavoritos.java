@@ -1,7 +1,8 @@
 package controlador;
 
+
 import java.io.IOException;
-import java.sql.PreparedStatement;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import GestionPeliculas;
+import beans.Pelicula;
+import beans.Usuario;
 import modelo.negocio.GestionPelicula;
 /**
  * Servlet implementation class RecuperarFavoritos
@@ -26,7 +28,7 @@ public class RecuperarFavoritos extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
         
-        favoritos = GestionPelicula;
+        favoritos = new GestionPelicula();
     }
 
 	/**
@@ -34,7 +36,7 @@ public class RecuperarFavoritos extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
 	}
 
 	/**
@@ -42,18 +44,23 @@ public class RecuperarFavoritos extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession(false);
+		HttpSession sesion=request.getSession(false);
+		if(sesion == null){
+			response.sendRedirect("index.jsp");
+		}else{
+			// TODO  De donde se saca el usuario??
 		
-	if (session != null){
-		
-		
-		
-		
-          List<Pelicula> peliculas = new List<Pelicula>();
-          
-          
-	        
-	        
-	    }
-	}}
-	
+			
+			int id = Integer.parseInt(request.getParameter("id"));
+			
+			String nombre = (String)request.getParameter("nombre");
+			
+			String pass = (String)request.getParameter("pass");
+			String email = (String)request.getParameter("email");
+			Usuario usuario = new Usuario (id, nombre, pass, email);
+			java.util.List <Pelicula> peliculasFavoritas = favoritos.recuperarFavoritas(usuario);
+			response.getWriter().append("Peliculas favoritas: ").append(peliculasFavoritas.toString());
+			response.sendRedirect("lista.jsp");
+		}
+	}	
+}

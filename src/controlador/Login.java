@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.Usuario;
-import modelo.negocio.GestionPelicula;
 import modelo.negocio.GestionUsuario;
 
 /**
@@ -27,7 +26,6 @@ public class Login extends HttpServlet {
     public Login() {
         super();
         gestionUsuario = new GestionUsuario();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -64,25 +62,4 @@ public class Login extends HttpServlet {
 			rd.forward(request, response);
 			}
 	}
-		
-		//if( email.equals(userRecuperado.getEmail()) ){
-			//System.out.println("Emails iguales");
-			//if( pass.equals(userRecuperado.getPass())){
-				//	if(user.getEmail().equals(userRecuperado.getEmail() ) && user.getPass().equals(userRecuperado.getPass() )){
-				// Iniciamos sesión
-				//HttpSession sesion=request.getSession(true);
-				//sesion.setMaxInactiveInterval(120);
-				//sesion.setAttribute("usuario",user);
-				//response.sendRedirect("index.jsp");
-			//}else{
-			//String error = "Error de Login";
-			//request.setAttribute("error", error);
-			//RequestDispatcher rd =  request.getRequestDispatcher("/index.jsp");
-			//rd.forward(request, response);
-			//}
-		
-		
-
-	}
-
 }

@@ -83,20 +83,10 @@ public class CrearPelicula extends HttpServlet {
 		}else{
 				
 				response.sendRedirect("index.jsp");
-<<<<<<< HEAD
-			}
-		}
 
-	public static void main(String[] args) {
-		CrearPelicula
-	}}
-		
-=======
 		}
 	}
-}
->>>>>>> 0922d8774e7b20576a7eddcc0cc6c44cbd954e33
-		
+}	
 		
 		
 		

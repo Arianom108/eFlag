@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" session=false %>
+    pageEncoding="ISO-8859-1" session="false" %>
+    <%@ page import="beans.*"%>
+<%@ page import="modelo.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang='en'>
 
@@ -71,38 +73,7 @@
 
 					</div>
 				</div>
-				<div id="main" class="header-main">
-					<div class="box">
-						<h1>MOVIES eFLAG</h1>
-						<p>las mejores peliculas del mundopeliculas del mundo</p>
-						<a href="peliculas.html" class="btnMovies">Lista de peliculas</a>
-						<a href="crear.html"
-							class="btnMovies <%=(user != null ? " " : "isHide")%>">Crear</a>
-						<!-- <a href="peliculas.html" class="btnMovies">Lista de peliculas</a>-->
-					</div>
-				</div>
-			</div>
-		</div>
-            <div class="header-bar">
-                <div class="logo">
-                    <a href="index.html"><!--<img src="./images/logo_texto.png" width="100%" alt="">-->eFlag</a>
-                </div>
-                <div id="burger" class="burger">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </div>
-                <div id="login" class="login">
-                    <form id="form" action="login" method="post" class="form">
-                        <input type="text" name="user" placeholder="USUARIO" required tabindex="1">
-                        <input type="password" name="password" tabindex="2" placeholder="CONTRASEÑA" required>
-                        <br><input tabindex="3" type="submit" value="ENTRAR">
-
-                    </form><br><a href="Registro.jsp" class="registre">Registrate</a>
-
-                </div>
-            </div>
-       <div id="main" class="header-main">
+				 <div id="main" class="header-main">
 					<div class="box">
 						<h1>MOVIES eFLAG</h1>
 						<p>las mejores peliculas del mundopeliculas del mundo</p>
@@ -113,10 +84,14 @@
 					</div>
 				</div>
         </div>
+			</div>
+		</div>
+           
+      
         <div class="crear">
             <h1>REGISTRA PELICULA</h1>
 			<div class="error"><% String error=(String)request.getAttribute("error");
-			if(!error.isEmpty()){
+			if(error!=null){
 				out.println("error al rellenar formulario");
 			}%></div>
             <form action="CrearPelicula" method="post" class="form">

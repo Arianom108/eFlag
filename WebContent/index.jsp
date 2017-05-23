@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"session="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -44,6 +44,12 @@ color: red;
                         <input type="text" name="email" placeholder="EMAIL" required tabindex="1">
                         <input type="password" name="password" tabindex="2" placeholder="CONTRASEÑA" required>
                         <br><input tabindex="3" type="submit" value="ENTRAR">
+               <%--    
+                  if(sesion.getAttribute("usuario") != null){
+                	  .is-hide
+                }--%>
+                  
+                  
                         <span><a href="registroPeliculas.html">Registrate</a></span>
                     </form><br>
 

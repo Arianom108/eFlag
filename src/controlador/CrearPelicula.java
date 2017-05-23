@@ -71,7 +71,6 @@ public class CrearPelicula extends HttpServlet {
 			peli.setGeneros(generos);
 			peli.setSinopsis(sinopsis);
 			gestor.crearPelicula(peli);
-			
 			response.sendRedirect("lista.jsp");
 			}
 		

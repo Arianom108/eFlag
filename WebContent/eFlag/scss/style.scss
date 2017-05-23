@@ -47,9 +47,7 @@ sans-serif;
 .heigthBg {
     height: 560px !important;
     min-height: 560px !important;
-}
-
-// ejemplos
+} // ejemplos
 // @mixin border-radius(radius) {
 // border-radius: radius;
 // }
@@ -286,9 +284,7 @@ body {
 
 .container {
     flex: 1;
-}
-
-//class--> footer
+} //class--> footer
 .footer {
     background-color: $color-primary-3;
     height: 100px;
@@ -311,13 +307,21 @@ body {
             border-bottom: none;
         }
     }
-}
-
-//class--> headerBg
+} //class--> headerBg
 .headerBg {
     background-image: url("./../images/bg3.jpg");
     background-size: cover;
     min-height: 100vh;
+    width: 100%;
+    position: relative;
+    filter: opacity(1);
+}
+
+.headerBg3 {
+    background-image: url("./../images/bg2.jpg") !important;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
     width: 100%;
     position: relative;
     filter: opacity(1);
@@ -331,9 +335,7 @@ body {
     width: 100%;
     position: relative;
     filter: opacity(1);
-}
-
-//class--> header
+} //class--> header
 .header {
     position: absolute;
     top: 0;
@@ -461,7 +463,9 @@ a.btnMovies {
 }
 
 .form {
+    line-height: 40px;
     @media only screen and (max-width: 768px) {
+        width: 100%;
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -493,17 +497,12 @@ a.btnMovies {
             display: block;
             margin: 0 auto;
             background-color: black;
-            width: 100%;
-            margin: 5px;
+            width: 90%;
+            float: none;
         }
     }
     input[type='password'] {
-        // float: right;
-        // margin-right: 50px;
-        @media only screen and (max-width: 768px) {
-            float: none;
-            margin-right: 0;
-        }
+        @media only screen and (max-width: 768px) {}
     }
     input[type='submit'] {
         color: #fff;
@@ -512,28 +511,29 @@ a.btnMovies {
         float: right;
         margin-right: 50px;
         @media only screen and (max-width: 768px) {
-            padding-bottom: 20px;
+            border: 2px solid $color-primary-3;
+            line-height: 35px;
+            border-radius: 5px;
             color: $color-primary-3;
-            ;
         }
     }
 }
 
 a.registre {
-    //overflow: hidden;
-    //width: 100%;
-    //margin-right: 50px;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -10px;
+    width: 84%;
+    border-top: 3px solid #fff;
     float: right;
+    margin-right: 50px;
     color: #fff;
     text-decoration-style: none;
     @media only screen and (max-width: 768px) {
-        margin: 0 auto;
+        margin-bottom: 5px;
         color: $color-primary-3;
-        ;
     }
-}
-
-//  class--> secction
+} //  class--> secction
 .section {
     background-color: $color-primary-3;
     color: #fff;
@@ -587,9 +587,7 @@ a.registre {
     .fa {
         text-shadow: 2px 2px 200px #000;
     }
-}
-
-// class-->filter
+} // class-->filter
 .filter {
     height: 100px;
     line-height: 100px;
@@ -605,9 +603,7 @@ a.registre {
         color: $color-primary-3;
         border-radius: 10px;
     }
-}
-
-// class--> content
+} // class--> content
 .content {
     // width: 100%;
     &-box {
@@ -620,9 +616,7 @@ a.registre {
             font-size: $size-extra-large;
         }
     }
-}
-
-// class --> movies
+} // class --> movies
 .movies {
     position: relative;
     display: flex; //flex-direction: row;
@@ -742,9 +736,7 @@ a.registre {
             }
         }
     }
-}
-
-//class--> content2
+} //class--> content2
 .content2 {
     overflow: hidden;
     background-color: #fff;
@@ -760,7 +752,7 @@ a.registre {
             font-size: $size-extra-large;
         }
     }
-}
+} 
 
 //url images
 //superman http://hdqwalls.com/download/superman-in-batman-vs-superman-movie-1024x1204.jpg
@@ -768,11 +760,129 @@ a.registre {
 //niños grandes 2 http://www.elmulticine.com/imagenes/carteles/3/ninos-grandes-2-poster-b.jpg
 //exorcita http://3.bp.blogspot.com/-ZxikvAz0V_A/TcSVqy2tCTI/AAAAAAAACi8/5gmlIHBxX9s/s1600/Exorcist%252BExorcista%252BThe%252B1973%252Bposter.jpg
 
+
 /*
+*css page detalle.html
+*/
+
+.movie {
+    position: relative;
+    font-family: $font3;
+    font-size: $size-medium*1.4;
+    box-sizing: inherit;
+    box-sizing: border-box;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    padding: 20px 0;
+    
+    &-image {
+        width: 50%;
+        height: 900px;
+        @extend .shadow;
+        img {
+            width: 100%;
+            height: 900px; 
+            background-position: center;
+            background-size: cover;
+            z-index: -1;
+            animation: opacidad;
+        }
+    }
+    &-text {
+        @extend .shadow;
+        padding: 20px; 
+        background-color: rgba($color-primary-3, 0.7); // padding: 20px;
+        color: #fff; 
+        width: 40%;
+        z-index: 100;
+    }
+}
+
+.movie-title {
+    font-size: $size-extra-large*1.5;
+    text-align: center;
+}
+
+.trailer {
+    display: flex;
+    justify-content: center;
+    font-family: $font3;
+    font-size: $size-extra-large*2;
+    padding: 20px;
+    .movie-meta {
+        @extend .shadow;
+        border: 2px solid $color-primary-3;
+        color: #fff;
+        padding: 5px;
+        border-radius: 10px;
+    }
+}
+
+li,
+strong {
+    font-family: $font2;
+}
+
+@keyframes opacidad {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 0.2;
+    }
+} // class--> crear
+.crear {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    font-family: $font1;
+    font-size: $size-extra-large;
+    justify-content: center; //margin: 0 auto;/
+    text-align: center;
+    .form {
+        background-color: rgba($color-primary-3, 0.9);
+        margin: 0 auto;
+        max-width: 800px;
+        padding: 20px;
+        span {
+            display: block;
+        }
+        input {
+            display: block;
+            margin: 0 auto;
+            width: 400px;
+            border-radius: 7px; //line-height: 80px;
+            border: 3px solid #fff;
+        }
+        .checkbox {
+            margin-top: 20px;
+            border: 3px solid #fff;
+            padding: 10px; //display: flex;
+            //flex-wrap: wrap;
+            //flex-flow: row;
+            input[type="checkbox"] {
+                width: 20px;
+                display: block;
+                text-align: center;
+            }
+        }
+        input[type="submit"] {
+            margin: 20px;
+            align-self: center;
+            background-color: #fff;
+            color: $color-primary-3;
+        }
+    }
+}
 
 
-
-
+/*
+>>>>>>> 2a6ac7d3e2bb1449e6cd59c8d90bd8e11c4d23c1
 @import '../../framework-duard/library/stickyFooter/scss/stickyFooter';
 body,
 h1,
@@ -867,4 +977,4 @@ h2 {
         border-top: 3px solid #fff;
         border-bottom: 3px solid #fff;
     }
-}*/
+}*/ //

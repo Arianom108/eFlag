@@ -35,7 +35,7 @@ public class EliminarPelicula extends HttpServlet {
 			response.sendRedirect("index.jsp");
 		}else{
 			int id = Integer.parseInt(request.getParameter("id"));
-			//gestor.eliminarPelicula(id);
+			gestor.eliminarPelicula(id);
 			response.sendRedirect("lista.jsp");
 		}
 	}

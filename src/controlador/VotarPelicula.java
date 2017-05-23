@@ -1,11 +1,15 @@
 package controlador;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import modelo.negocio.GestionPelicula;
 
 /**
  * Servlet implementation class VotarPelicula
@@ -13,13 +17,14 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/VotarPelicula")
 public class VotarPelicula extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	GestionPelicula gestorPeliculas;
     /**
      * @see HttpServlet#HttpServlet()
      */
     public VotarPelicula() {
         super();
         // TODO Auto-generated constructor stub
+        gestorPeliculas = new GestionPelicula();
     }
 
 	/**
@@ -27,7 +32,14 @@ public class VotarPelicula extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		int  numVotos= Integer.parseInt(request.getParameter("numero_votos"));
+		int idPelicula = Integer.parseInt(request.getParameter("id"));
+		gestorPeliculas.votarPelicula(idPelicula, numVotos);
+		RequestDispatcher rd = request.getRequestDispatcher("Peliculas.jsp");
+		rd.forward(request, response);	
+		
+		
 	}
 
 	/**

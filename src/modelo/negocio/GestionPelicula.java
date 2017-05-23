@@ -36,6 +36,10 @@ public class GestionPelicula {
 		return daoPeli.recuperarXnota();
 	}
 	
+	public boolean votarPelicula(int idPelicula, int numVotos){
+		return daoPeli.votarPelicula(idPelicula, numVotos);
+	}
+	
 	
 	
 

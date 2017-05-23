@@ -3,6 +3,7 @@ package controlador;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,12 +39,12 @@ public class RecuperarXNota extends HttpServlet {
 		if(sesion == null){
 			response.sendRedirect("index.jsp");
 		}else{
-			String nota = (String)request.getParameter("nota");
-			if(nota!=null && !nota.isEmpty()){
-				List<Pelicula> peliculasXNota = gestor.recuperarXNota();
-				response.getWriter().append("Peliculas por nota: ").append(peliculasXNota.toString());
-				response.sendRedirect("lista.jsp");
-			}
+			String nota = request.getParameter("nota");
+			List<Pelicula> peliculasXNota = gestor.recuperarXnota();
+			
+			request.setAttribute("lista", peliculasXNota);
+			RequestDispatcher rd = request.getRequestDispatcher("Peliculas.jsp");
+			rd.forward(request, response);					
 		}
 	}
 

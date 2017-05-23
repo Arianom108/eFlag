@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,9 +42,11 @@ public class RecuperarPeliculas extends HttpServlet {
 		if(sesion == null){
 			response.sendRedirect("index.jsp");
 		}else{
+			
 			List<Pelicula> peliculas = gestor.recuperarTodas();
-			response.getWriter().append("Peliculas: ").append(peliculas.toString());
-			response.sendRedirect("lista.jsp");
+			request.setAttribute("lista", peliculas);
+			RequestDispatcher rd = request.getRequestDispatcher("Peliculas.jsp");
+			rd.forward(request, response);		
 		}
 	}
 

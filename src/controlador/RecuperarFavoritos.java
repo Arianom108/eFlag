@@ -2,8 +2,9 @@ package controlador;
 
 
 import java.io.IOException;
+import java.util.List;
 
-
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import beans.Pelicula;
 import beans.Usuario;
+import modelo.negocio.GestionFavoritas;
 import modelo.negocio.GestionPelicula;
 /**
  * Servlet implementation class RecuperarFavoritos
@@ -20,7 +22,7 @@ import modelo.negocio.GestionPelicula;
 @WebServlet("/RecuperarFavoritos")
 public class RecuperarFavoritos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       GestionPelicula favoritos ;
+       GestionFavoritas favoritas ;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -28,39 +30,32 @@ public class RecuperarFavoritos extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
         
-        favoritos = new GestionPelicula();
+        favoritas = new GestionFavoritas();
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
+		doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	
 		HttpSession sesion=request.getSession(false);
 		if(sesion == null){
 			response.sendRedirect("index.jsp");
 		}else{
-			// TODO  De donde se saca el usuario??
-		
+			Usuario  user=(Usuario)sesion.getAttribute("user");		
+					
+			List <Pelicula> peliculasFavoritas = favoritas.recuperarFavoritas(user);
 			
-			int id = Integer.parseInt(request.getParameter("id"));
-			
-			String nombre = (String)request.getParameter("nombre");
-			
-			String pass = (String)request.getParameter("pass");
-			String email = (String)request.getParameter("email");
-			Usuario usuario = new Usuario (id, nombre, pass, email);
-			java.util.List <Pelicula> peliculasFavoritas = favoritos.recuperarFavoritas(usuario);
-			response.getWriter().append("Peliculas favoritas: ").append(peliculasFavoritas.toString());
-			response.sendRedirect("lista.jsp");
+			request.setAttribute("peliculasFavoritas", peliculasFavoritas);
+			RequestDispatcher rd = request.getRequestDispatcher("Peliculas.jsp");
+			rd.forward(request, response);			
 		}
 	}	
 }

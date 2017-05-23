@@ -3,6 +3,7 @@ package controlador;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,12 +39,12 @@ public class RecuperarXGenero extends HttpServlet {
 		if(sesion == null){
 			response.sendRedirect("index.jsp");
 		}else{
-			String genero = (String)request.getParameter("genero");
-			if(genero!=null && !genero.isEmpty()){
-				List<Pelicula> peliculasXGenero = gestor.recuperarXGenero(genero);
-				response.getWriter().append("Peliculas por genero: ").append(peliculasXGenero.toString());
-				response.sendRedirect("lista.jsp");
-			}
+			String genero = request.getParameter("generos");
+		
+				List<Pelicula> peliculasXGenero = gestor.recuperarXgenero(genero);
+				request.setAttribute("lista", peliculasXGenero);
+				RequestDispatcher rd = request.getRequestDispatcher("Peliculas.jsp");
+				rd.forward(request, response);		
 		}
 	}
 

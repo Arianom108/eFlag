@@ -5,7 +5,7 @@
 /* Large devices (large desktops, 1200px and up) */
 /* TEMA = constants : (colores, estilos, fuentes) */
 /* MODULOS = (botones, iconos, widget):varibles @mixin.., @extend... */
-.shadow, .movies-item, .movies-item .eye, .movies-item-detail {
+.shadow, .movies-item, .movies-item .eye, .movies-item-detail, .movie-image, .movie-text, .trailer .movie-meta {
   box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.4), 0 6px 40px 0 rgba(0, 0, 0, 0.29); }
 
 .heigthBg {
@@ -315,10 +315,10 @@ body {
 
 .btnMovies {
   border-radius: 10px;
-  background-color: #2A707A;
+  background-color: #fff;
   font-family: "Orbitron", sans-serif;
-  color: #fff;
-  padding: 20px;
+  color: #2A707A;
+  padding: 10px;
   box-shadow: 2px 2px 40px #fff; }
   @media only screen and (max-width: 768px) {
     .btnMovies {
@@ -330,7 +330,7 @@ body {
 
 a.btnMovies {
   margin-top: 10px;
-  text-shadow: 2px 2px 50px #000; }
+  text-shadow: 2px 2px 10px grey; }
 
 .logo {
   display: block;
@@ -360,6 +360,20 @@ a.btnMovies {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column; }
+  .login-user {
+    line-height: 40px;
+    color: #fff;
+    font-size: 1.2em;
+    margin-right: 50px; }
+  .login-cerrar {
+    color: #fff;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    padding-right: 50px; }
   @media only screen and (max-width: 768px) {
     .login {
       position: absolute;
@@ -475,7 +489,8 @@ a.registre {
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  margin-top: -10px;
+  margin-top: -15px;
+  padding-top: 5px;
   width: 84%;
   border-top: 3px solid #fff;
   float: right;
@@ -610,12 +625,12 @@ a.registre {
       box-sizing: border-box;
       position: absolute;
       top: 0;
-      line-height: 40px;
+      line-height: 25px;
       left: 0;
       z-index: 100;
       width: 100%;
       text-align: center;
-      font-size: 1.2em;
+      font-size: 0.8em;
       font-family: "Orbitron", sans-serif;
       background-color: rgba(42, 112, 122, 0.5); }
       .movies-item-content .fa {
@@ -649,18 +664,18 @@ a.registre {
       color: #fff;
       font-size: 0.8em;
       font-family: "Kanit", sans-serif;
-      line-height: 20px; }
+      line-height: 15px; }
       .movies-item-detail .detail {
-        padding: 10px 10px 10px 30px; }
+        padding: 5px 5px 5px 10px; }
       .movies-item-detail span {
         font-family: "Open Sans Condensed", sans-serif;
-        font-size: 0.8em; }
+         }
       .movies-item-detail .votar {
         left: 0;
         border-top: 2px solid #fff;
         text-align: center;
         width: 100%;
-        padding: 5px; }
+        padding: 5px 0; }
         .movies-item-detail .votar span {
           font-family: "Kanit", sans-serif;
           font-size: 1.2em;
@@ -693,7 +708,7 @@ a.registre {
 .movie {
   position: relative;
   font-family: "Kanit", sans-serif;
-  font-size: 1.12em;
+  //font-size: 1.12em;
   box-sizing: inherit;
   box-sizing: border-box;
   max-width: 1000px;
@@ -704,10 +719,10 @@ a.registre {
   padding: 20px 0; }
   .movie-image {
     width: 50%;
-    height: 900px; }
+    height: 700px; }
     .movie-image img {
       width: 100%;
-      height: 900px;
+      height: 700px;
       background-position: center;
       background-size: cover;
       z-index: -1;
@@ -717,11 +732,11 @@ a.registre {
     padding: 20px;
     background-color: rgba(42, 112, 122, 0.7);
     color: #fff;
-    width: 40%;
+    width: 45%;
     z-index: 100; }
 
 .movie-title {
-  font-size: 2.4em;
+  font-size: 1.5em;
   text-align: center; }
 
 .trailer {
@@ -732,14 +747,17 @@ a.registre {
   -ms-flex-pack: center;
   justify-content: center;
   font-family: "Kanit", sans-serif;
-  font-size: 3.2em;
-  padding: 20px; }
+  //font-size: 3.2em;
+  //padding: 20px; }
   .trailer .movie-meta {
-    border: 2px solid #2A707A;
-    color: #fff;
+     }
+.trailer .movie-meta a{
+	color: red;
+	background-color:#fff;
+	border: 2px solid #2A707A;
+    border-radius: 10px;
     padding: 5px;
-    border-radius: 10px; }
-
+}
 li,
 strong {
   font-family: "Open Sans Condensed", sans-serif; }
@@ -804,8 +822,61 @@ strong {
       align-self: center;
       background-color: #fff;
       color: #2A707A; }
+.ed-modal {
+  position: absolute;
+  z-index: 10000;
+  width: 100%;
+  height: 550px;
+  left: 0;
+  top: 100px;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex; }
+
+.ed-closeModal {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
+  opacity: .5; }
+  .ed-closeModal::before, .ed-closeModal::after {
+    content: "";
+    width: 2.12rem;
+    height: 2px;
+    background: #FFF;
+    position: absolute;
+    top: 0;
+    transform: rotate(45deg);
+    transform-origin: top left; }
+  .ed-closeModal::before {
+    left: 0; }
+  .ed-closeModal::after {
+    right: 0;
+    transform: rotate(-45deg);
+    transform-origin: top right; }
+
+.modalContent {
+  width: 90%;
+  max-width: 1000px;
+  margin: auto; }
+
+.video {
+  width: 100%;
+  position: relative;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden; }
+  .video iframe {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%; }
+
 
 /*
+>>>>>>> 2a6ac7d3e2bb1449e6cd59c8d90bd8e11c4d23c1
 @import '../../framework-duard/library/stickyFooter/scss/stickyFooter';
 body,
 h1,
@@ -881,7 +952,12 @@ h2 {
         width: 400px;
     }
 }
-
+.error {
+	color: red;
+	display: flex;
+    padding-top: 14px;
+    justify-content: flex-end;
+}
 .registre {
     float: right;
     margin-right: 30px;
@@ -895,9 +971,3 @@ h2 {
     font-size: 1.9em;
     margin-top: -100px;
     z-index: 100;
-    color: #fff;
-    &-box {
-        border-top: 3px solid #fff;
-        border-bottom: 3px solid #fff;
-    }
-}*/

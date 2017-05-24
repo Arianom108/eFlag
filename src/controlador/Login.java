@@ -48,7 +48,7 @@ public class Login extends HttpServlet {
 		user = gestionUsuario.logarUsuario(user);
 		if(user!=null){
 			HttpSession sesion=request.getSession(true);
-			sesion.setMaxInactiveInterval(300);
+			sesion.setMaxInactiveInterval(600);
 			sesion.setAttribute("usuario",user);
 			RequestDispatcher rd =  request.getRequestDispatcher("/index.jsp");
 			rd.forward(request, response);

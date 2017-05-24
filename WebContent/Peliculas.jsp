@@ -34,7 +34,7 @@
 					if (request.getAttribute("error") != null) {
 						String error = (String) request.getAttribute("error");
 				%>
-				<%=error%>
+				<% out.println("<div class='error'>"+error+"</div>"); %>
 				<%
 					}
 				%>
@@ -48,7 +48,8 @@
 
 				<div id="login" class="login">
 					<%
-						out.println("Hola " + user.getNombre());
+						out.println("<div class='login-user'>hola " + user.getNombre() + "</div>");
+							out.println("<a class='login-cerrar' href='CerrarSession'>CERRAR</a> ");
 					%>
 					<form id="form" action="Login" method="post"
 						class="form <%out.println("isHide");%>">
@@ -79,8 +80,8 @@
 					<div class="box">
 						<h1>MOVIES eFLAG</h1>
 						<p>las mejores peliculas del mundopeliculas del mundo</p>
-						<a href="Peliculas.jsp" class="btnMovies">Lista de peliculas</a>
-						<a href="CrearPelicula.jsp"
+						<a href="Peliculas.jsp" class="btnMovies">Lista de peliculas</a> <a
+							href="CrearPelicula.jsp"
 							class="btnMovies <%=(user != null ? " " : "isHide")%>">Crear</a>
 						<!-- <a href="peliculas.html" class="btnMovies">Lista de peliculas</a>-->
 					</div>
@@ -110,7 +111,7 @@
 					</select> <input type="submit" value="Busqueda">
 				</form>
 			</div>
-			<div class="movies">
+			<div id="movies" class="movies">
 				<%
 					List<Pelicula> listFavorites = null;
 					GestionPelicula gestorPelicula = new GestionPelicula();
@@ -141,13 +142,13 @@
 					}
 				}%>"
 							aria-hidden="true"></i></a> <a
-							href="RecuperarPelicula?id=<%=l.getId_pelicula()%>"><%=l.getTitulo() %></a>
+							href="RecuperarPelicula?id=<%=l.getId_pelicula()%>"><%=l.getTitulo()%></a>
 					</div>
 					<a class="eye" href="RecuperarPelicula?id=<%=l.getId_pelicula()%>">Ver</a>
 					<div class="movies-item-detail">
 						<div class="detail">
-							valoracion: <span><%=l.getNota_media()%></span> <br>
-							genero: <span><%=l.getGeneros()%></span> <br> año: <span><%=l.getFecha()%></span>
+							valoracion: <span><%=l.getNota_media()%></span> <br> genero:
+							<span><%=l.getGeneros()%></span> <br> año: <span><%=l.getFecha()%></span>
 						</div>
 						<form class="votar <%=(user != null) ? " " : "isHide"%>"
 							action="VotarPelicula" method="post">

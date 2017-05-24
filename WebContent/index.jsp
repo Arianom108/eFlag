@@ -17,11 +17,7 @@
 	rel="stylesheet">
 <link href='css/style.css' rel='stylesheet'>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<style>
-.error {
-	color: red;
-}
-</style>
+
 </head>
 <body>
 	<div class="container">
@@ -29,192 +25,206 @@
 		<div class="header">
 			<div class="header-bar">
 				<div class="logo">
-					<a href="index.html"><img src="./images/logo_eflag1.png"
-						width="100%" alt=""></a>
+					<a href="index.jsp">
+						<!--  <img src="./images/logo_eflag1.png" width="100%" alt="">-->eFlag
+					</a>
 				</div>
 				<div id="burger" class="burger">
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</div>
 				<%
-                if( request.getAttribute("error")!= null){
-                String error =(String) request.getAttribute("error");         
-                %>
-				<%= error %>
-				<%} %>
+					if (request.getAttribute("error") != null) {
+						String error = (String) request.getAttribute("error");
+				%>
 				<%
-					Usuario user=null;
+					out.println("<div class='error'>" + error + "</div>");
+				%>
+				<%
+					}
+				%>
+				<%
+					Usuario user = null;
 					HttpSession session = request.getSession(false);
-					if(session!=null){
+					if (session != null) {
 						user = (Usuario) session.getAttribute("usuario");
-					//out.println(user.getNombre());
+						//out.println(user.getNombre());
 				%>
 
 				<div id="login" class="login">
 					<%
-							out.println("Hola " + user.getNombre());
+						out.println("<div class='login-user'>hola " + user.getNombre() + "</div>");
+							out.println("<a class='login-cerrar' href='CerrarSession'>CERRAR</a> ");
 					%>
 					<form id="form" action="Login" method="post"
-						class="form <%out.println("isHide");	%>">
+						class="form <%out.println("isHide");%>">
 						<input type="text" name="email" placeholder="CORREO" required
 							tabindex="1"> <input type="password" name="password"
 							tabindex="2" placeholder="CONTRASEÑA" required> <br>
 						<input tabindex="3" type="submit" value="ENTRAR">
 					</form>
-					<%}else{ %>
-						<div id="login" class="login">
-					                  
-					<form id="form" action="Login" method="post"
-						class="form">
-						<input type="text" name="email" placeholder="CORREO" required
-							tabindex="1"> <input type="password" name="password"
-							tabindex="2" placeholder="CONTRASEÑA" required> <br>
-						<input tabindex="3" type="submit" value="ENTRAR">
-					</form>
-					<%}%>
-					<span><a href="Registro.jsp">Registrate</a></span>
-					</form>
-					<br>
+					<%
+						} else {
+					%>
+					<div id="login" class="login">
 
+						<form id="form" action="Login" method="post" class="form">
+							<input type="text" name="email" placeholder="CORREO" required
+								tabindex="1"> <input type="password" name="password"
+								tabindex="2" placeholder="CONTRASEÑA" required> <br>
+							<input tabindex="3" type="submit" value="ENTRAR">
+						</form>
+						<%
+							}
+						%>
+						<br> <a href="Registro.jsp" class="registre">Registrate</a>
+						</form>
+						<br>
+
+					</div>
 				</div>
-			</div>
-			<div id="main" class="header-main">
+				<div id="main" class="header-main">
 					<div class="box">
 						<h1>MOVIES eFLAG</h1>
 						<p>las mejores peliculas del mundopeliculas del mundo</p>
-						<a href="Peliculas.jsp" class="btnMovies">Lista de peliculas</a>
-						<a href="CrearPelicula.jsp"
+						<a href="Peliculas.jsp" class="btnMovies">Lista de peliculas</a> <a
+							href="CrearPelicula.jsp"
 							class="btnMovies <%=(user != null ? " " : "isHide")%>">Crear</a>
 						<!-- <a href="peliculas.html" class="btnMovies">Lista de peliculas</a>-->
 					</div>
 				</div>
-		</div>
-		<div class="section">
-			<div class="page">
-				<div class="page-item">
-					<div class="icon">
-						<i class="fa fa-film fa-5x" aria-hidden="true"></i>
-					</div>
-					<h2>ACCION</h2>
-					<div class="text">Lorem ipsum dolor sit amet, consectetur
-						adipisicing elit. Dolorum delectus quia, quaerat praesentium vel!
-						Tenetur quisquam magnam sequi, ratione non?</div>
-				</div>
-
-				<div class="page-item">
-					<div class="icon">
-						<i class="fa fa-video-camera fa-5x" aria-hidden="true"></i>
-					</div>
-					<h2>TERROR</h2>
-					<div class="text">Lorem ipsum dolor sit amet, consectetur
-						adipisicing elit. Dolorum delectus quia, quaerat praesentium vel!
-						Tenetur quisquam magnam sequi, ratione non?</div>
-				</div>
-
-				<div class="page-item">
-					<div class="icon">
-						<i class="fa fa-star fa-5x" aria-hidden="true"></i>
-					</div>
-					<h2>AVENTURA</h2>
-					<div class="text">Lorem ipsum dolor sit amet, consectetur
-						adipisicing elit. Dolorum delectus quia, quaerat praesentium vel!
-						Tenetur quisquam magnam sequi, ratione non?</div>
-				</div>
 			</div>
-			<div class="content">
-				<div class="content-box">
-					<p>in eaque, blanditiis natus voluptates rem laudantium dolorem
-						tenetur corporis maiores, sint excepturi dolor tempore nemo quae
-						hic ullam, fugiat provident.</p>
-				</div>
-			</div>
-			<div class="movies">
+			<div class="section">
+				<div class="page">
+					<div class="page-item">
+						<div class="icon">
+							<i class="fa fa-film fa-5x" aria-hidden="true"></i>
+						</div>
+						<h2>ACCION</h2>
+						<div class="text">Lorem ipsum dolor sit amet, consectetur
+							adipisicing elit. Dolorum delectus quia, quaerat praesentium vel!
+							Tenetur quisquam magnam sequi, ratione non?</div>
+					</div>
 
-				<div class="movies-item">
-					<div class="movies-item-image">
-						<img
-							src="http://hdqwalls.com/download/superman-in-batman-vs-superman-movie-1024x1204.jpg"
-							alt="" width="100%">
+					<div class="page-item">
+						<div class="icon">
+							<i class="fa fa-video-camera fa-5x" aria-hidden="true"></i>
+						</div>
+						<h2>TERROR</h2>
+						<div class="text">Lorem ipsum dolor sit amet, consectetur
+							adipisicing elit. Dolorum delectus quia, quaerat praesentium vel!
+							Tenetur quisquam magnam sequi, ratione non?</div>
 					</div>
-					<div class="movies-item-content">
-						<a href="marcar"> <i class="fa fa-star fa-2x isFavorite"
-							aria-hidden="true"></i></a><a href="peliculas.html">SUPERMAN</a>
+
+					<div class="page-item">
+						<div class="icon">
+							<i class="fa fa-star fa-5x" aria-hidden="true"></i>
+						</div>
+						<h2>AVENTURA</h2>
+						<div class="text">Lorem ipsum dolor sit amet, consectetur
+							adipisicing elit. Dolorum delectus quia, quaerat praesentium vel!
+							Tenetur quisquam magnam sequi, ratione non?</div>
 					</div>
-					<a class="eye" href="peliculas.html">Ver</a>
-					<div class="movies-item-detail">
-						<div class="detail">
-							valoracion: <span>7,3</span> <br> genero: <span>accion</span>
-							<br> año: <span>2017</span>
+				</div>
+				<div class="content">
+					<div class="content-box">
+						<p>in eaque, blanditiis natus voluptates rem laudantium
+							dolorem tenetur corporis maiores, sint excepturi dolor tempore
+							nemo quae hic ullam, fugiat provident.</p>
+					</div>
+				</div>
+				<div class="movies">
+
+					<div class="movies-item">
+						<div class="movies-item-image">
+							<img
+								src="http://hdqwalls.com/download/superman-in-batman-vs-superman-movie-1024x1204.jpg"
+								alt="" width="100%">
+						</div>
+						<div class="movies-item-content">
+							<a href="Peliculas.jsp">SUPERMAN</a>
+						</div>
+						<a class="eye" href="Peliculas.jsp">Ver</a>
+						<div class="movies-item-detail">
+							<div class="detail">
+								valoracion: <span>7,3</span> <br> genero: <span>accion</span>
+								<br> año: <span>2017</span>
+							</div>
+						</div>
+					</div>
+					<div class="movies-item">
+						<div class="movies-item-image">
+							<img
+								src="http://www.elmulticine.com/imagenes/carteles/3/ninos-grandes-2-poster-b.jpg"
+								alt="" width="100%">
+						</div>
+						<div class="movies-item-content">
+							<a href="Peliculas.jsp">NIÑOS GRANDES 2</a>
+						</div>
+						<a class="eye" href="Peliculas.jsp">Ver</a>
+						<div class="movies-item-detail">
+							<div class="detail">
+								valoracion: <span>5,8</span> <br>genero: <span>comedia</span><br>
+								año: <span>2017</span>
+							</div>
+						</div>
+					</div>
+					<div class="movies-item">
+						<div class="movies-item-image">
+							<img
+								src="http://4.bp.blogspot.com/-1aTgAcMkoCk/VgIzFaOLSAI/AAAAAAAAA8I/jDewVAvo6sU/s1600/Avengers%2B2%2B800x1200.JPG"
+								alt="" width="100%">
+						</div>
+						<div class="movies-item-content">
+							<a href="Peliculas.jsp">AVENGERS</a>
+						</div>
+						<a class="eye" href="Peliculas.jsp">Ver</a>
+						<div class="movies-item-detail">
+							<div class="detail">
+								valoracion: <span>8,4</span><br>ficcion: <span>accion</span>
+								<br>año: <span>2017</span>
+							</div>
+						</div>
+					</div>
+					<div class="movies-item">
+						<div class="movies-item-image">
+							<img
+								src="http://3.bp.blogspot.com/-ZxikvAz0V_A/TcSVqy2tCTI/AAAAAAAACi8/5gmlIHBxX9s/s1600/Exorcist%252BExorcista%252BThe%252B1973%252Bposter.jpg"
+								alt="" width="100%">
+						</div>
+						<div class="movies-item-content">
+							<a href="Peliculas.jsp">EXORCISTA</a>
+						</div>
+						<a class="eye" href="Peliculas.jsp">Ver</a>
+						<div class="movies-item-detail">
+							<div class="detail">
+								valoracion: <span>9,1</span> <br>genero: <span>TERROR</span><br>
+								año: <span>2017</span>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div class="movies-item">
-					<div class="movies-item-image">
-						<img
-							src="http://www.elmulticine.com/imagenes/carteles/3/ninos-grandes-2-poster-b.jpg"
-							alt="" width="100%">
-					</div>
-					<div class="movies-item-content">
-						<a href="peliculas.html">NIÑOS GRANDES 2</a>
-					</div>
-					<a class="eye" href="peliculas.html">Ver</a>
-					<div class="movies-item-detail">
-						valoracion: <span>5,8</span> <br>genero: <span>comedia</span><br>
-						año: <span>2017</span>
-					</div>
-				</div>
-				<div class="movies-item">
-					<div class="movies-item-image">
-						<img
-							src="http://4.bp.blogspot.com/-1aTgAcMkoCk/VgIzFaOLSAI/AAAAAAAAA8I/jDewVAvo6sU/s1600/Avengers%2B2%2B800x1200.JPG"
-							alt="" width="100%">
-					</div>
-					<div class="movies-item-content">
-						<a href="peliculas.html">AVENGERS</a>
-					</div>
-					<a class="eye" href="peliculas.html">Ver</a>
-					<div class="movies-item-detail">
-						valoracion: <span>8,4</span><br>ficcion: <span>accion</span>
-						<br>año: <span>2017</span>
-					</div>
-				</div>
-				<div class="movies-item">
-					<div class="movies-item-image">
-						<img
-							src="http://3.bp.blogspot.com/-ZxikvAz0V_A/TcSVqy2tCTI/AAAAAAAACi8/5gmlIHBxX9s/s1600/Exorcist%252BExorcista%252BThe%252B1973%252Bposter.jpg"
-							alt="" width="100%">
-					</div>
-					<div class="movies-item-content">
-						<a href="peliculas.html">EXORCISTA</a>
-					</div>
-					<a class="eye" href="peliculas.html">Ver</a>
-					<div class="movies-item-detail">
-						valoracion: <span>9,1</span> <br>genero: <span>TERROR</span><br>
-						año: <span>2017</span>
+				<div class="content2">
+					<div class="content2-box">
+						<p>in eaque, blanditiis natus voluptates rem laudantium
+							dolorem tenetur corporis maiores, sint excepturi dolor tempore
+							nemo quae hic ullam, fugiat provident.</p>
 					</div>
 				</div>
 			</div>
-			<div class="content2">
-				<div class="content2-box">
-					<p>in eaque, blanditiis natus voluptates rem laudantium dolorem
-						tenetur corporis maiores, sint excepturi dolor tempore nemo quae
-						hic ullam, fugiat provident.</p>
-				</div>
+
+
+			<footer class="footer">
+			<div class="footer-box">
+				by development <span>&</span> design eFlag 2017
 			</div>
-		</div>
+			</footer>
 
 
-		<footer class="footer">
-		<div class="footer-box">
-			by development <span>&</span> design eFlag 2017
-		</div>
-		</footer>
-
-
-		<!-- FUENTE DE ICONOS DE FONTAWESOME -->
-		<script async type='text/javascript'
-			src='https://use.fontawesome.com/493ef35f7a.js'></script>
-		<!-- HOJA DE JAVASCRIPT -->
-		<script async type='text/javascript' src='js/js.js'></script>
+			<!-- FUENTE DE ICONOS DE FONTAWESOME -->
+			<script async type='text/javascript'
+				src='https://use.fontawesome.com/493ef35f7a.js'></script>
+			<!-- HOJA DE JAVASCRIPT -->
+			<script async type='text/javascript' src='js/js.js'></script>
 </body>
 </html>

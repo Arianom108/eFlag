@@ -387,10 +387,10 @@ body {
 
 .btnMovies {
     border-radius: 10px;
-    background-color: $color-primary-3;
+    background-color: #fff;
     font-family: $font1;
-    color: #fff;
-    padding: 20px;
+    color: $color-primary-3;
+    padding: 10px;
     box-shadow: 2px 2px 40px #fff;
     @media only screen and(max-width: 768px) {
         display: block;
@@ -403,7 +403,7 @@ body {
 
 a.btnMovies {
     margin-top: 10px;
-    text-shadow: 2px 2px 50px #000;
+    text-shadow: 2px 2px 10px grey;
 }
 
 .logo {
@@ -430,6 +430,19 @@ a.btnMovies {
     display: flex;
     align-items: flex-end;
     flex-direction: column;
+    &-user{
+        line-height: 40px;
+        color: #fff;
+        font-size: $size-large;
+        margin-right: 50px;
+    }
+    &-cerrar{
+        color: #fff;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 50px;
+        //width: 100%;
+    }
     @media only screen and (max-width: 768px) {
         position: absolute;
         top: 50%;
@@ -522,7 +535,8 @@ a.btnMovies {
 a.registre {
     display: flex;
     justify-content: flex-end;
-    margin-top: -10px;
+    margin-top: -15px;
+    padding-top: 5px;
     width: 84%;
     border-top: 3px solid #fff;
     float: right;
@@ -660,12 +674,12 @@ a.registre {
             box-sizing: border-box;
             position: absolute;
             top: 0;
-            line-height: 80px;
+            line-height: 40px;
             left: 0;
             z-index: 100;
             width: 100%;
             text-align: center;
-            font-size: $size-large;
+            font-size: $size-medium;
             font-family: $font1;
             background-color: rgba($color-primary-3, 0.5);
             .fa {
@@ -704,11 +718,11 @@ a.registre {
             @extend .shadow;
             background-color: $color-primary-3;
             color: #fff;
-            font-size: $size-large;
+            font-size: $size-medium;
             font-family: $font3;
-            line-height: 20px;
+            line-height: 15px;
             .detail {
-                padding: 10px 10px 10px 30px;
+                padding: 5px 5px 5px 10px;
             }
             span {
                 font-family: $font2;
@@ -879,6 +893,58 @@ strong {
         }
     }
 }
+.ed-modal {
+  position: absolute;
+  z-index: 10000;
+  width: 100%;
+  height: 550px;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex; }
+
+.ed-closeModal {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
+  opacity: .5; }
+  .ed-closeModal::before, .ed-closeModal::after {
+    content: "";
+    width: 2.12rem;
+    height: 2px;
+    background: #FFF;
+    position: absolute;
+    top: 0;
+    transform: rotate(45deg);
+    transform-origin: top left; }
+  .ed-closeModal::before {
+    left: 0; }
+  .ed-closeModal::after {
+    right: 0;
+    transform: rotate(-45deg);
+    transform-origin: top right; }
+
+.modalContent {
+  width: 90%;
+  max-width: 1000px;
+  margin: auto; }
+
+.video {
+  width: 100%;
+  position: relative;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden; }
+  .video iframe {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%; }
+
 
 
 /*

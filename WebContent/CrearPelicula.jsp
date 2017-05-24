@@ -17,11 +17,11 @@
 
 <body>
     <div class="container">
-       <div id="headerBg" class="headerBg2 heigthBg"></div>
+       	<div id="headerBg" class="headerBg3 heigthBg"></div>
 		<div id="header" class="header heigthBg">
 			<div class="header-bar">
 				<div class="logo">
-					<a href="index.html"> <!--<img src="./images/logo_texto.png" width="100%" alt="">-->eFlag
+					<a href="index.jsp"> <!--<img src="./images/logo_texto.png" width="100%" alt="">-->eFlag
 					</a>
 				</div>
 				<div id="burger" class="burger">
@@ -32,7 +32,7 @@
 					if (request.getAttribute("error") != null) {
 						String error = (String) request.getAttribute("error");
 				%>
-				<%=error%>
+				<% out.println("<div class='error'>"+error+"</div>"); %>
 				<%
 					}
 				%>
@@ -46,7 +46,8 @@
 
 				<div id="login" class="login">
 					<%
-						out.println("Hola " + user.getNombre());
+						out.println("<div class='login-user'>hola " + user.getNombre() + "</div>");
+							out.println("<a class='login-cerrar' href='CerrarSession'>CERRAR</a> ");
 					%>
 					<form id="form" action="Login" method="post"
 						class="form <%out.println("isHide");%>">
@@ -69,24 +70,22 @@
 						<%
 							}
 						%>
-						<br> <a href="registro.html" class="registre">Registrate</a>
+						<br> <a href="Registro.jsp" class="registre">Registrate</a>
 
 					</div>
 				</div>
-				 <div id="main" class="header-main">
+				<div id="main" class="header-main">
 					<div class="box">
 						<h1>MOVIES eFLAG</h1>
 						<p>las mejores peliculas del mundopeliculas del mundo</p>
-						<a href="Peliculas.jsp" class="btnMovies">Lista de peliculas</a>
-						<a href="CrearPelicula.jsp"
+						<a href="Peliculas.jsp" class="btnMovies">Lista de peliculas</a> <a
+							href="CrearPelicula.jsp"
 							class="btnMovies <%=(user != null ? " " : "isHide")%>">Crear</a>
 						<!-- <a href="peliculas.html" class="btnMovies">Lista de peliculas</a>-->
 					</div>
 				</div>
-        </div>
 			</div>
 		</div>
-           
       
         <div class="crear">
             <h1>REGISTRA PELICULA</h1>
@@ -118,7 +117,7 @@
                     <span>CORTO</span><input type="checkbox" name="ck1" value="corto">
                     <span>CIENCIA FICCION</span><input type="checkbox" name="ck1" value="ficcion">
                 </div>
-                <input type="submit" value="Crear Pelicula">
+                <input type="submit" tabindex="9" value="Crear Pelicula">
             </form>
 
         </div>

@@ -131,10 +131,14 @@ public class PeliculaDAO {
 		return false;
 	}
 	
-	public List<Pelicula> recuperarXgenero(){
-		String sql =  "SELECT * FROM peliculas WHERE generos LIKE '%Drama%'";
+	public List<Pelicula> recuperarXgenero(String genero){	
+		String sql =  "SELECT * FROM peliculas WHERE generos LIKE ";
+		sql +=  "'";
+		sql += genero;
+		sql +="'";
 		try {
 			PreparedStatement sentencia = conexion.prepareStatement(sql);
+			sentencia.setString(1, genero);
 			ResultSet rs =sentencia.executeQuery();
 			List<Pelicula> listaXgenero = new ArrayList<Pelicula>();
 			while(rs.next()){

@@ -29,11 +29,15 @@ public class GestionPelicula {
 	}
 		
 	public List<Pelicula> recuperarXgenero(String genero){
-		return daoPeli.recuperarXgenero();
+		return daoPeli.recuperarXgenero(genero);
 	}
 	
 	public List<Pelicula> recuperarXnota(){
 		return daoPeli.recuperarXnota();
+	}
+	
+	public boolean votarPelicula(int idPelicula, int numVotos){
+		return daoPeli.votarPelicula(idPelicula, numVotos);
 	}
 	
 	

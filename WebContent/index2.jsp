@@ -1,81 +1,84 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" session="false"%>
 <%@ page import="beans.* " session="false"%>
 <%@ page import="modelo.negocio.*, java.util.*"%>
-<!DOCTYPE html PUBLIC "//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>eFLag | Movies Online</title>
-
-<meta name='viewport' content='width=devicewidth, initialscale=1'>
+<title>MOVIES eFLAG</title>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
 <link rel='icon' type='image/png' sizes='16x16'
 	href='image/icon/favicon.ico'>
 <script
 	src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js '></script>
 <link
-	href="https://fonts.googleapis.com/css?family=Kanit|OpenSansCondensed:300i|Orbitron:500"
+	href="https://fonts.googleapis.com/css?family=Kanit|Open+Sans+Condensed:300i|Orbitron:500"
 	rel="stylesheet">
 <link href='css/style.css' rel='stylesheet'>
-
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<style>
+.error {
+	color: red;
+}
+</style>
 </head>
 <body>
 	<div class="container">
-		<div id="headerBg" class="headerBg2 heigthBg"></div>
-		<div id="header" class="header heigthBg">
+		<div class="headerBg"></div>
+		<div class="header">
 			<div class="header-bar">
 				<div class="logo">
-					<a href="index.jsp"> <!--<img src="./images/logo_texto.png" width="100%" alt="">-->eFlag
-					</a>
+					<a href="index.html"><img src="./images/logo_eflag1.png"
+						width="100%" alt=""></a>
 				</div>
 				<div id="burger" class="burger">
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</div>
 				<%
-					if (request.getAttribute("error") != null) {
-						String error = (String) request.getAttribute("error");
-				%>
-				<%=error%>
+                if( request.getAttribute("error")!= null){
+                String error =(String) request.getAttribute("error");         
+                %>
+				<%= error %>
+				<%} %>
 				<%
-					}
-				%>
-				<%
-					Usuario user = null;
+					Usuario user=null;
 					HttpSession session = request.getSession(false);
-					if (session != null) {
+					if(session!=null){
 						user = (Usuario) session.getAttribute("usuario");
-						//out.println(user.getNombre());
+					//out.println(user.getNombre());
 				%>
 
 				<div id="login" class="login">
 					<%
-						out.println("Hola " + user.getNombre());
+							out.println("Hola " + user.getNombre());
 					%>
 					<form id="form" action="Login" method="post"
-						class="form <%out.println("isHide");%>">
+						class="form <%out.println("isHide");	%>">
 						<input type="text" name="email" placeholder="CORREO" required
 							tabindex="1"> <input type="password" name="password"
-							tabindex="2" placeholder="CONTRASEÑA" required> <br>
+							tabindex="2" placeholder="CONTRASE�A" required> <br>
 						<input tabindex="3" type="submit" value="ENTRAR">
 					</form>
-					<%
-						} else {
-					%>
-					<div id="login" class="login">
+					<%}else{ %>
+						<div id="login" class="login">
+					                  
+					<form id="form" action="Login" method="post"
+						class="form">
+						<input type="text" name="email" placeholder="CORREO" required
+							tabindex="1"> <input type="password" name="password"
+							tabindex="2" placeholder="CONTRASE�A" required> <br>
+						<input tabindex="3" type="submit" value="ENTRAR">
+					</form>
+					<%}%>
+					<span><a href="Registro.jsp">Registrate</a></span>
+					</form>
+					<br>
 
-						<form id="form" action="Login" method="post" class="form">
-							<input type="text" name="email" placeholder="CORREO" required
-								tabindex="1"> <input type="password" name="password"
-								tabindex="2" placeholder="CONTRASEÑA" required> <br>
-							<input tabindex="3" type="submit" value="ENTRAR">
-						</form>
-						<%
-							}
-						%>
-						<br> <a href="Registro.jsp" class="registre">Registrate</a>
-
-					</div>
 				</div>
-				<div id="main" class="header-main">
+			</div>
+			<div id="main" class="header-main">
 					<div class="box">
 						<h1>MOVIES eFLAG</h1>
 						<p>las mejores peliculas del mundopeliculas del mundo</p>
@@ -85,31 +88,48 @@
 						<!-- <a href="peliculas.html" class="btnMovies">Lista de peliculas</a>-->
 					</div>
 				</div>
-			</div>
 		</div>
 		<div class="section">
-			<div class="filter">
-				<form id="filter" action="filter" class="filter-form" method="post">
-					Realiza un Busqueda <select name="genero">
-						<% if(user!=null){ %>
-						<option name="Favoritas" value="Favoritas">Favoritas</option>
-						<%} %> 
-						<option name="Todas" value="Todas">Todas</option>
-						<option name="Animación" value="animacion">Animación</option>
-						<option name="Aventuras" value="aventuras">Aventuras</option>
-						<option name="Comedia" value="comedia">Comedia</option>
-						<option name="Acción" value="accion">Acción</option>
-						<option name="Drama" value="drama">Drama</option>
-						<option name="Terror" value="terror">Terror</option>
-						<option name="Ficción" value="ficcion">Ciencia Ficción</option>
-						<option name="Romántica" value="romantica">Romántica</option>
-						<option name="Histórica" value="historica">Histórica</option>
-						<option name="Corto" value="corto">Corto</option>
-						<option name="Populares" value="populares">Populares</option>
-						<option name="Notas" value="Notas">Por nota</option>
-					</select> <input type="submit" value="Busqueda">
-				</form>
+			<div class="page">
+				<div class="page-item">
+					<div class="icon">
+						<i class="fa fa-film fa-5x" aria-hidden="true"></i>
+					</div>
+					<h2>ACCION</h2>
+					<div class="text">Lorem ipsum dolor sit amet, consectetur
+						adipisicing elit. Dolorum delectus quia, quaerat praesentium vel!
+						Tenetur quisquam magnam sequi, ratione non?</div>
+				</div>
+
+				<div class="page-item">
+					<div class="icon">
+						<i class="fa fa-video-camera fa-5x" aria-hidden="true"></i>
+					</div>
+					<h2>TERROR</h2>
+					<div class="text">Lorem ipsum dolor sit amet, consectetur
+						adipisicing elit. Dolorum delectus quia, quaerat praesentium vel!
+						Tenetur quisquam magnam sequi, ratione non?</div>
+				</div>
+
+				<div class="page-item">
+					<div class="icon">
+						<i class="fa fa-star fa-5x" aria-hidden="true"></i>
+					</div>
+					<h2>AVENTURA</h2>
+					<div class="text">Lorem ipsum dolor sit amet, consectetur
+						adipisicing elit. Dolorum delectus quia, quaerat praesentium vel!
+						Tenetur quisquam magnam sequi, ratione non?</div>
+				</div>
 			</div>
+			<div class="content">
+				<div class="content-box">
+					<p>in eaque, blanditiis natus voluptates rem laudantium dolorem
+						tenetur corporis maiores, sint excepturi dolor tempore nemo quae
+						hic ullam, fugiat provident.</p>
+				</div>
+			</div>
+		
+		<div class="section">			
 			<div class="movies">
 				<%
 					List<Pelicula> listFavorites = null;
@@ -120,9 +140,11 @@
 						listFavorites = gestorFavoritas.recuperarFavoritas(user);
 					}
 					if (list == null) {
-						list = gestorPelicula.recuperarTodas();
+						list = gestorPelicula.recuperarXgenero("terror");
 					}
+				
 					for (Pelicula l : list) {
+					//for (int i=0;i<list.size();i++){
 				%>
 				<div class="movies-item">
 					<div class="movies-item-image">
@@ -147,11 +169,10 @@
 					<div class="movies-item-detail">
 						<div class="detail">
 							valoracion: <span><%=l.getNota_media()%></span> <br>
-							genero: <span><%=l.getGeneros()%></span> <br> año: <span><%=l.getFecha()%></span>
+							genero: <span><%=l.getGeneros()%></span> <br> a�o: <span><%=l.getFecha()%></span>
 						</div>
 						<form class="votar <%=(user != null) ? " " : "isHide"%>"
-							action="VotarPelicula" method="post">
-							<input type="hidden" name="id" value="<%=l.getId_pelicula()%>">
+							action="VotarPelicula?id=<%=l.getId_pelicula()%>" method="post">
 							<span>Votar</span> <select name="votar">
 								<option value="0">0</option>
 								<option value="1">1</option>
@@ -168,7 +189,7 @@
 					</div>
 				</div>
 				<%
-					}
+					}//cierre del for para la lista
 				%>
 				<div class="content2">
 					<div class="content2-box">

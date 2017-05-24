@@ -25,7 +25,7 @@ public class PeliculaDAO {
 	
 		m = (m*v+n)/(v+1);
 
-		String sql = "UPDATE peliculas SET numero_votos='"+(v+1)+"', nota_media='"+m+"' WHERE id=?";
+		String sql = "UPDATE peliculas SET votos='"+(v+1)+"', nota_media='"+m+"' WHERE id_pelicula=?";
 			try {
 				PreparedStatement sentencia = conexion.prepareStatement(sql);
 				sentencia.setInt(1, id);

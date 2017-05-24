@@ -25,7 +25,7 @@ public class PeliculaDAO {
 	
 		m = (m*v+n)/(v+1);
 
-		String sql = "UPDATE peliculas SET numero_votos='"+(v+1)+"', nota_media='"+m+"' WHERE id=?";
+		String sql = "UPDATE peliculas SET votos='"+(v+1)+"', nota_media='"+m+"' WHERE id_pelicula=?";
 			try {
 				PreparedStatement sentencia = conexion.prepareStatement(sql);
 				sentencia.setInt(1, id);
@@ -133,12 +133,12 @@ public class PeliculaDAO {
 	
 	public List<Pelicula> recuperarXgenero(String genero){	
 		String sql =  "SELECT * FROM peliculas WHERE generos LIKE ";
-		sql +=  "'";
+		sql +=  "'%";
 		sql += genero;
-		sql +="'";
+		sql +="%'";
 		try {
 			PreparedStatement sentencia = conexion.prepareStatement(sql);
-			sentencia.setString(1, genero);
+			//sentencia.setString(1, genero);
 			ResultSet rs =sentencia.executeQuery();
 			List<Pelicula> listaXgenero = new ArrayList<Pelicula>();
 			while(rs.next()){

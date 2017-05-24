@@ -40,7 +40,7 @@ public class MarcarDesmarcarFavorito extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession sesion = request.getSession(false);
 		if (sesion == null) {
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("Peliculas.jsp");
 		} else {
 			int id = Integer.parseInt(request.getParameter("id"));
 			Usuario user = (Usuario) sesion.getAttribute("usuario");

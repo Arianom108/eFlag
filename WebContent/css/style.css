@@ -293,7 +293,7 @@ body {
     -ms-flex-direction: column;
     flex-direction: column;
     color: #fff;
-    font-size: 2.4em;
+    font-size: 1.6em;
     margin: auto; }
     @media only screen and (max-width: 768px) {
       .header-main {
@@ -302,7 +302,7 @@ body {
 .box {
   text-align: center; }
   .box h1 {
-    line-height: 150px;
+    line-height: 120px;
     border-bottom: 5px solid #fff;
     border-top: 5px solid #fff; }
     @media only screen and (max-width: 768px) {
@@ -510,7 +510,7 @@ a.registre {
 
 .page {
   margin: 0 auto;
-  padding: 50px 0;
+ // padding: 50px 0;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -533,7 +533,7 @@ a.registre {
     border: 5px solid #fff;
     margin-top: 50px;
     width: 30%;
-    padding: 10px;
+  //  padding: 10px;
     background-color: #2A707A; }
     @media only screen and (max-width: 768px) {
       .page-item {
@@ -553,7 +553,7 @@ a.registre {
 
 .icon {
   margin: 30px 0 3px 0;
-  font-size: 1.2em; }
+  font-size: 0.7em; }
   .icon .fa {
     text-shadow: 2px 2px 200px #000; }
 
@@ -576,7 +576,8 @@ a.registre {
   font-size: 3.2em;
   text-align: center;
   width: 80%;
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding-bottom:1px; }
   @media only screen and (max-width: 768px) {
     .content-box {
       font-size: 1.6em; } }
@@ -605,8 +606,8 @@ a.registre {
   .movies-item {
     position: relative;
     width: 22%;
-    height: 400px;
-    margin-bottom: 150px;
+    height: 370px;
+    margin-bottom: 50px;
     margin-top: 20px; }
     @media only screen and (max-width: 1200px) {
       .movies-item {
@@ -643,7 +644,7 @@ a.registre {
         color: #fff; }
     .movies-item .eye {
       position: absolute;
-      top: 370px;
+      top: 345px;
       left: 70%;
       overflow: hidden;
       width: 50px;
@@ -694,9 +695,9 @@ a.registre {
     z-index: 100;
     color: #2A707A;
     font-family: "Open Sans Condensed", sans-serif;
-    font-size: 3.2em;
+    font-size: 3em;
     text-align: center;
-    width: 80%;
+    width: 90%;
     margin: 0 auto; }
     @media only screen and (max-width: 768px) {
       .content2-box {

@@ -73,11 +73,10 @@
 								tabindex="2" placeholder="CONTRASEÑA" required> <br>
 							<input tabindex="3" type="submit" value="ENTRAR">
 						</form>
+						<br> <a href="Registro.jsp" class="registre">Registrate</a>
 						<%
 							}
 						%>
-						<br> <a href="Registro.jsp" class="registre">Registrate</a>
-
 					</div>
 				</div>
 				<div id="main" class="header-main">

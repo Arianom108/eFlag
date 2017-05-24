@@ -64,18 +64,16 @@
 						} else {
 					%>
 					<div id="login" class="login">
-
 						<form id="form" action="Login" method="post" class="form">
 							<input type="text" name="email" placeholder="CORREO" required
 								tabindex="1"> <input type="password" name="password"
 								tabindex="2" placeholder="CONTRASEÑA" required> <br>
 							<input tabindex="3" type="submit" value="ENTRAR">
 						</form>
+						<br> <a href="Registro.jsp" class="registre">Registrate</a>
 						<%
 							}
 						%>
-						<br> <a href="Registro.jsp" class="registre">Registrate</a>
-
 					</div>
 				</div>
 				<div id="main" class="header-main">

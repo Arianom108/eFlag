@@ -69,10 +69,11 @@
 								tabindex="2" placeholder="CONTRASEÑA" required> <br>
 							<input tabindex="3" type="submit" value="ENTRAR">
 						</form>
+						<br> <a href="Registro.jsp" class="registre">Registrate</a>
 						<%
 							}
 						%>
-						<br> <a href="Registro.jsp" class="registre">Registrate</a>
+						
 
 					</div>
 				</div>
@@ -174,8 +175,7 @@
 				<div class="content2">
 					<div class="content2-box">
 						<p>in eaque, blanditiis natus voluptates rem laudantium
-							dolorem tenetur corporis maiores, sint excepturi dolor tempore
-							nemo quae hic ullam, fugiat provident.</p>
+							dolorem tenetur corporis maiores, sint excepturi dolor.</p>
 					</div>
 				</div>
 			</div>

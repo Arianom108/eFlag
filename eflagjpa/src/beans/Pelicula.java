@@ -1,26 +1,18 @@
 package beans;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Pelicula {
-	private int id_pelicula, duracion, numero_votos;
+	@Id
+	@GeneratedValue
+	private int id_pelicula;
+	private int duracion, numero_votos;
 	private String titulo, fecha, caratula, trailer, actores, directores, sinopsis;
 	private double nota_media;
-	String generos;
-	public Pelicula(int id_pelicula, int duracion, int numero_votos, String titulo, String fecha, String caratula,
-			String trailer, String actores, String directores, String sinopsis, double nota_media, String generos) {
-		super();
-		this.id_pelicula = id_pelicula;
-		this.duracion = duracion;
-		this.numero_votos = numero_votos;
-		this.titulo = titulo;
-		this.fecha = fecha;
-		this.caratula = caratula;
-		this.trailer = trailer;
-		this.actores = actores;
-		this.directores = directores;
-		this.sinopsis = sinopsis;
-		this.nota_media = nota_media;
-		this.generos = generos;
-	}
+	private String generos;
 	
 	public Pelicula(){}
 

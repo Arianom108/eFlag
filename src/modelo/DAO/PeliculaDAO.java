@@ -166,7 +166,7 @@ public class PeliculaDAO {
 	}
 
 	public List<Pelicula> recuperarXnota() {
-		String sql =  "SELECT * FROM peliculas ORDER BY nota_media";
+		String sql =  "SELECT * FROM peliculas ORDER BY nota_media desc";
 		try {
 			PreparedStatement sentencia = conexion.prepareStatement(sql);
 			ResultSet rs =sentencia.executeQuery();

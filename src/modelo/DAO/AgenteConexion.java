@@ -12,7 +12,7 @@ public class AgenteConexion {
 	protected AgenteConexion(String nombreDB) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conexion = DriverManager.getConnection("jdbc:mysql://localhost/" + nombreDB, "root", "138410he");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost/" + nombreDB, "root", "root");
 		} catch (ClassNotFoundException | SQLException e) {
 			System.out.println("Error de conexion");
 		}

@@ -16,35 +16,40 @@ import modelo.negocio.GestionPelicula;
 @WebServlet("/EliminarPelicula")
 public class EliminarPelicula extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	GestionPelicula gestor;
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public EliminarPelicula() {
-        super();
-        gestor = new GestionPelicula();
-        // TODO Auto-generated constructor stub
-    }
+	GestionPelicula gestorPelicula;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession sesion=request.getSession(false);
-		if(sesion == null){
+	public EliminarPelicula() {
+		super();
+		gestorPelicula = new GestionPelicula();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession sesion = request.getSession(false);
+		if (sesion == null) {
 			response.sendRedirect("index.jsp");
-		}else{
+		} else {
 			int id = Integer.parseInt(request.getParameter("id"));
-			gestor.eliminarPelicula(id);
+			gestorPelicula.eliminarPelicula(id);
 			response.sendRedirect("lista.jsp");
 		}
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		doGet(request, response);
 
 	}

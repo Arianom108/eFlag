@@ -1,23 +1,30 @@
 package beans;
 
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Usuario {
-	private int id_usuario;
-	private String nombre, email, pass;
-	
-	public Usuario(int id_usuario, String nombre, String pass, String email) {
-		super();
-		this.id_usuario = id_usuario;
-		this.nombre = nombre;
-		this.email = email;
-		this.pass = pass;
+	private String nombre;
+	@Id
+	private String email;
+	private String pass;
+
+    @ManyToMany(fetch=FetchType.EAGER)
+	List<Pelicula> favoritos; 	    
+		
+	public List<Pelicula> getFavoritos() {
+		return favoritos;
+	}
+	public void setFavoritos(List<Pelicula> favoritos) {
+		this.favoritos = favoritos;
 	}
 	public Usuario(){}
-	public int getId_usuario() {
-		return id_usuario;
-	}
-	public void setId_usuario(int id_usuario) {
-		this.id_usuario = id_usuario;
-	}
 	public String getNombre() {
 		return nombre;
 	}
@@ -35,6 +42,6 @@ public class Usuario {
 	}
 	public void setPass(String pass) {
 		this.pass = pass;
-	};	
+	}	
 	
 }

@@ -4,50 +4,58 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
+import javax.persistence.EntityManager;
+
+import beans.Pelicula;
 import beans.Usuario;
 
 public class UsuarioDAO {
-	Connection conexion;
+	AgenteConexion agente;
+	EntityManager em;
 
 	public UsuarioDAO() {
 		super();
-		this.conexion = AgenteConexion.getAgente().conexion;
+		agente = AgenteConexion.getAgente();
+		em = agente.getEntityManager();
 	}
-	
-	public boolean crearUsuario(Usuario usuario){
-		String sql = "INSERT INTO usuarios VALUES (null, ?,?,?)";
-		//String sql = "INSERT INTO peliculas VALUES (null,?,?,?,null,?,?,?,?,?,null,?)";
+
+	public boolean crearUsuario(Usuario usuario) {
 		try {
-			PreparedStatement sentencia = conexion.prepareStatement(sql);
-			sentencia.setString(1, usuario.getNombre());
-			sentencia.setString(2, usuario.getPass());
-			sentencia.setString(3, usuario.getEmail());
-			sentencia.executeUpdate();
-			sentencia.close();
-			return true;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
+			em.persist(usuario);
+
+		} catch (Exception e) {
+			agente.rollback();
+			return false;
 		}
-		
-		return false;
+		return true;
 	}
-	
-	public Usuario recuperarUsuario(Usuario usuario){
-		String sql = "SELECT * FROM usuarios where email=?";
-		try {
-			PreparedStatement sentencia = conexion.prepareStatement(sql);
-			sentencia.setString(1, usuario.getEmail());
-			ResultSet rs = sentencia.executeQuery();
-			if(rs.next()){
-				return new Usuario(rs.getInt("id_usuario"), rs.getString("nombre"), rs.getString("password"),  rs.getString("email")   );
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+
+	public Usuario recuperarUsuario(Usuario usuario) {
+		Usuario u = em.find(Usuario.class, usuario.getEmail());
+		//em.refresh(u);
+		return u;
 	}
+
 	
+
+	public List<Pelicula> recuperarFavoritas(Usuario usuario) {
+		Usuario u = em.find(Usuario.class, usuario);
+		return u.getFavoritos();
+
+	}
+
+	public void iniciarTransaccion() {
+		agente.iniciarTransaccion();
+	}
+
+	public void cerrarTransaccion() {
+		agente.cerrarTransaccion();
+	}
+	public void cerrarConexion() {
+		em.close();
+
+	}
+
 }

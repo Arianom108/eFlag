@@ -3,18 +3,32 @@ package beans;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+@Table
 @Entity
+
+
+@NamedQueries({
+	@NamedQuery(query = "Select p from Pelicula p", name="findAllFilms"),
+	@NamedQuery(query = "SELECT p FROM Pelicula p WHERE p.generos like :generos", name = "findByGenere"),
+	@NamedQuery(query = "SELECT p FROM Pelicula p order By p.nota_media desc" , name = "findByOrder")
+//	@NamedQuery(query ="UPDATE Pelicula p SET p.numero_votos=p.numeros_votos+1, p.nota_media=(p.nota_media*p.numero_votos+p.nota_media)/(p.numero_votos+1) WHERE p.id_pelicula=?3" , name = "fidByOrder")
+}) 
 public class Pelicula {
 	@Id
 	@GeneratedValue
-	private int id_pelicula;
+	private Integer id_pelicula;
 	private int duracion, numero_votos;
 	private String titulo, fecha, caratula, trailer, actores, directores, sinopsis;
 	private double nota_media;
 	private String generos;
 	
 	public Pelicula(){}
+
 
 	public String getSinopsis() {
 		return sinopsis;

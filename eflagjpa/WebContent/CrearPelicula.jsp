@@ -104,14 +104,14 @@
                 <span>VIDEO</span><input type="text" name="video" required tabindex="8" placeholder="url-video">
                 <span>GENERO</span>
                 <div class="checkbox">
-                    <span>ANIMACION</span><input type="checkbox" name="ck1" value="animation">
-                    <span>AVENTURA</span><input type="checkbox" name="ck1"value="aventure" >
-                    <span>COMEDIA</span><input type="checkbox" name="ck1" value="comedy">
+                    <span>ANIMACION</span><input type="checkbox" name="ck1" value="animacion">
+                    <span>AVENTURA</span><input type="checkbox" name="ck1"value="aventura" >
+                    <span>COMEDIA</span><input type="checkbox" name="ck1" value="comedia">
                     <span>ACCION</span><input type="checkbox" name="ck1" value="accion">
                     <span>DRAMA</span><input type="checkbox" name="ck1" value="drama">
                     <span>TERROR</span><input type="checkbox" name="ck1" value="terror">
-                    <span>ROMANTICA</span><input type="checkbox" name="ck1" value="romantic">
-                    <span>HISTORICA</span><input type="checkbox" name="ck1" value="history">
+                    <span>ROMANTICA</span><input type="checkbox" name="ck1" value="romantica">
+                    <span>HISTORICA</span><input type="checkbox" name="ck1" value="historia">
                     <span>CORTO</span><input type="checkbox" name="ck1" value="corto">
                     <span>CIENCIA FICCION</span><input type="checkbox" name="ck1" value="ficcion">
                 </div>

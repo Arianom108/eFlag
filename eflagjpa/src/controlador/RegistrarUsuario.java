@@ -50,11 +50,9 @@ public class RegistrarUsuario extends HttpServlet {
 		if(gestionUsuario.crearUsuario(user)){
 			HttpSession sesion=request.getSession(true);
 			sesion.setMaxInactiveInterval(600);
-			Usuario usuario = new Usuario();
-			usuario=gestionUsuario.recuperarUsuario(user);
+			Usuario usuario=gestionUsuario.recuperarUsuario(user);
 			sesion.setAttribute("usuario",usuario);
-			RequestDispatcher rd =  request.getRequestDispatcher("/index.jsp");
-			rd.forward(request, response);
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
 			
 		}else{
 			String error="error no se ha podido registrar el usuario";

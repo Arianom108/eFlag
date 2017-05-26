@@ -114,13 +114,13 @@
 			</div>
 			<div id="movies" class="movies">
 				<%
-					List<Pelicula> listFavorites = null;
+				//	List<Pelicula> listFavorites = null;
 					GestionPelicula gestorPelicula = new GestionPelicula();
-					GestionFavoritas gestorFavoritas = new GestionFavoritas();
+					//GestionFavoritas gestorFavoritas = new GestionFavoritas();
 					List<Pelicula> list = (ArrayList<Pelicula>) request.getAttribute("lista");
-					if (user != null) {
-						listFavorites = gestorFavoritas.recuperarFavoritas(user);
-					}
+// 					if (user != null) {
+// 						listFavorites = gestorFavoritas.recuperarFavoritas(user);
+// 					}
 					if (list == null) {
 						list = gestorPelicula.recuperarTodas();
 					}
@@ -136,11 +136,11 @@
 							href="MarcarDesmarcarFavorito?id=<%=l.getId_pelicula()%>"> <i
 							class="fa fa-star fa-2x 
 							<%if (user != null) {
-					for (Pelicula p : listFavorites) {
-						if (p.getId_pelicula() == l.getId_pelicula()) {
-							out.println("isFavorite");
-						}
-					}
+// 					for (Pelicula p : listFavorites) {
+// 						if (p.getId_pelicula() == l.getId_pelicula()) {
+// 							out.println("isFavorite");
+// 						}
+// 					}
 				}%>"
 							aria-hidden="true"></i></a> <a
 							href="RecuperarPelicula?id=<%=l.getId_pelicula()%>"><%=l.getTitulo()%></a>

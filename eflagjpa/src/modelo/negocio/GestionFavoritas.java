@@ -12,10 +12,10 @@ public class GestionFavoritas {
 		daoFavoritas = new FavoritasDAO();
 	}
 	public List<Pelicula> recuperarFavoritas(Usuario usuario){
-		return daoFavoritas.recuperarFavoritas(usuario);
+		return daoUsuario.recuperarUsuario().getFavoritas();
 	}
-	public boolean modificarFavoritas(int id, Usuario user){
-		return daoFavoritas.modificarFavorita(id, user);
+	public boolean modificarFavoritas(Pelicula p, Usuario user){
+		return daoFavoritas.modificarFavorita(p, user);
 	}
 	
 

@@ -105,6 +105,8 @@ public class PeliculaDAO {
 					return true;
 				}
 			}
+			list.add(p);
+			usuario.setFavoritos(list);
 			em.merge(p);
 			return true;
 		} catch (Exception e) {

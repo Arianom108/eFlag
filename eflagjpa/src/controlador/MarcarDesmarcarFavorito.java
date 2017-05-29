@@ -44,6 +44,7 @@ public class MarcarDesmarcarFavorito extends HttpServlet {
 			int id = Integer.parseInt(request.getParameter("id"));
 			Usuario user = (Usuario) sesion.getAttribute("usuario");
 			//gestorFavoritas.modificarFavoritas(gestorPeliculas.recuperaPelicula(id), user);
+			gestorPeliculas.modificarFavoritas(gestorPeliculas.recuperaPelicula(id), user);
 			List<Pelicula> peliculas = gestorPeliculas.recuperarTodas();
 			request.setAttribute("lista", peliculas);
 			RequestDispatcher rd = request.getRequestDispatcher("Peliculas.jsp");

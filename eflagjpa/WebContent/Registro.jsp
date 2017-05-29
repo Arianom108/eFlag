@@ -69,9 +69,9 @@
 
 						<form id="form" action="Login" method="post" class="form">
 							<input type="text" name="email" placeholder="CORREO" required
-								tabindex="1"> <input type="password" name="password"
-								tabindex="2" placeholder="CONTRASEÑA" required> <br>
-							<input tabindex="3" type="submit" value="ENTRAR">
+								tabindex="4"> <input type="password" name="password"
+								tabindex="5" placeholder="CONTRASEÑA" required> <br>
+							<input tabindex="6" type="submit" value="ENTRAR">
 						</form>
 						<br> <a href="Registro.jsp" class="registre">Registrate</a>
 						<%
@@ -104,10 +104,10 @@
 			</div>
 
 			<form action="RegistrarUsuario" method="post" class="form">
-				<span>NOMBRE</span> <input type="text" name="name" required	tabindex="1" placeholder="nombre"> 
-				<span>E-MAIL</span><input	type="email" name="email" required tabindex="2" placeholder="email">
-				<span>CONTRASEÑA</span><input type="text" name="password"	tabindex="3" required placeholder="contraseña"> 
-				<input tabindex="4"	type="submit" value="Crear Usuario">
+				<span>NOMBRE</span> <input type="text" name="name" required	tabindex="7" placeholder="nombre"> 
+				<span>E-MAIL</span><input	type="email" name="email" required tabindex="8" placeholder="email">
+				<span>CONTRASEÑA</span><input type="text" name="password"	tabindex="9" required placeholder="contraseña"> 
+				<input tabindex="10"	type="submit" value="Crear Usuario">
 			</form>
 
 		</div>

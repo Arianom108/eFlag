@@ -102,12 +102,12 @@ public class PeliculaDAO {
 			for (Pelicula pelicula : list) {
 				if (pelicula.equals(p)) {
 					em.remove(p);
-					list.remove(p);
+					//list.remove(p);
 					return true;
 				}
 			}
 			list.add(p);
-			usuario.setFavoritos(list);
+			//usuario.setFavoritos(list);
 			em.merge(p);
 			return true;
 		} catch (Exception e) {

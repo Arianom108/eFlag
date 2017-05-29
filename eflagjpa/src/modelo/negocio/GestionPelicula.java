@@ -53,7 +53,10 @@ public class GestionPelicula {
 	}
 	
 	public boolean modificarFavoritas(Pelicula p, Usuario user){
-		return daoPeli.modificarFavorita(p, user);
+		daoPeli.iniciarTransaccion();
+		boolean r = daoPeli.modificarFavorita(p, user);
+		daoPeli.cerrarTransaccion();
+		return r;
 	}
 
 }

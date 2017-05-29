@@ -102,6 +102,7 @@ public class PeliculaDAO {
 			for (Pelicula pelicula : list) {
 				if (pelicula.equals(p)) {
 					em.remove(p);
+					list.remove(p);
 					return true;
 				}
 			}

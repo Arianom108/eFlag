@@ -95,6 +95,23 @@ public class PeliculaDAO {
 		return query.getResultList();
 
 	}
+	
+	public boolean modificarFavorita(Pelicula p, Usuario usuario) {
+		List<Pelicula> list = usuario.getFavoritos();
+		try {
+			for (Pelicula pelicula : list) {
+				if (pelicula.equals(p)) {
+					em.remove(p);
+					return true;
+				}
+			}
+			em.merge(p);
+			return true;
+		} catch (Exception e) {
+			agente.rollback();
+			return false;
+		}
+	}
 
 	public void iniciarTransaccion() {
 		agente.iniciarTransaccion();

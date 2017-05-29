@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="beans.* " session="false"%>
-<%@ page import="modelo.negocio.*, java.util.*"%>
+<%@ page import="modelo.negocio.*, java.util.List"%>
 <!DOCTYPE html PUBLIC "//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -114,13 +114,10 @@
 			</div>
 			<div id="movies" class="movies">
 				<%
-				//	List<Pelicula> listFavorites = null;
+					List<Pelicula> listFavorites = (List<Pelicula>)user.getFavoritos();
 					GestionPelicula gestorPelicula = new GestionPelicula();
 					//GestionFavoritas gestorFavoritas = new GestionFavoritas();
-					List<Pelicula> list = (ArrayList<Pelicula>) request.getAttribute("lista");
-// 					if (user != null) {
-// 						listFavorites = gestorFavoritas.recuperarFavoritas(user);
-// 					}
+					List<Pelicula> list = (List<Pelicula>) request.getAttribute("lista");
 					if (list == null) {
 						list = gestorPelicula.recuperarTodas();
 					}
@@ -136,11 +133,11 @@
 							href="MarcarDesmarcarFavorito?id=<%=l.getId_pelicula()%>"> <i
 							class="fa fa-star fa-2x 
 							<%if (user != null) {
-// 					for (Pelicula p : listFavorites) {
-// 						if (p.getId_pelicula() == l.getId_pelicula()) {
-// 							out.println("isFavorite");
-// 						}
-// 					}
+					for (Pelicula p : listFavorites) {
+						if (p.getId_pelicula() == l.getId_pelicula()) {
+							out.println("isFavorite");
+						}
+					}
 				}%>"
 							aria-hidden="true"></i></a> <a
 							href="RecuperarPelicula?id=<%=l.getId_pelicula()%>"><%=l.getTitulo()%></a>

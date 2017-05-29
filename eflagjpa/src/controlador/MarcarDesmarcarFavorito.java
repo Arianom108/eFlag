@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import beans.Pelicula;
 import beans.Usuario;
-import modelo.negocio.GestionFavoritas;
 import modelo.negocio.GestionPelicula;
 
 /**
@@ -22,12 +21,12 @@ import modelo.negocio.GestionPelicula;
 @WebServlet("/MarcarDesmarcarFavorito")
 public class MarcarDesmarcarFavorito extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	GestionFavoritas gestorFavoritas;
+	//GestionFavoritas gestorFavoritas;
 	GestionPelicula gestorPeliculas;
 
 	public MarcarDesmarcarFavorito() {
 		super();
-		gestorFavoritas = new GestionFavoritas();
+		//gestorFavoritas = new GestionFavoritas();
 		gestorPeliculas = new GestionPelicula();
 	}
 
@@ -44,7 +43,7 @@ public class MarcarDesmarcarFavorito extends HttpServlet {
 		} else {
 			int id = Integer.parseInt(request.getParameter("id"));
 			Usuario user = (Usuario) sesion.getAttribute("usuario");
-			gestorFavoritas.modificarFavoritas(gestorPeliculas.recuperaPelicula(id), user);
+			//gestorFavoritas.modificarFavoritas(gestorPeliculas.recuperaPelicula(id), user);
 			List<Pelicula> peliculas = gestorPeliculas.recuperarTodas();
 			request.setAttribute("lista", peliculas);
 			RequestDispatcher rd = request.getRequestDispatcher("Peliculas.jsp");

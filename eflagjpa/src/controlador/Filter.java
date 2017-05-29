@@ -22,14 +22,14 @@ import modelo.negocio.*;
 @WebServlet("/filter")
 public class Filter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    GestionFavoritas rf;
+   // GestionFavoritas rf;
     GestionPelicula gestion;
     /**
      * @see HttpServlet#HttpServlet()
      */
     public Filter() {
         super();
-        rf = new GestionFavoritas();
+        //rf = new GestionFavoritas();
         gestion = new GestionPelicula();
     }
 
@@ -57,8 +57,10 @@ public class Filter extends HttpServlet {
 		}
 		switch (genero) {
 		case "Favoritas":
-			List<Pelicula> favoritas =new ArrayList<Pelicula>();
-			favoritas = rf.recuperarFavoritas(user);
+			List<Pelicula> favoritas = user.getFavoritos();
+			if(favoritas==null){
+				favoritas = new ArrayList<Pelicula>();
+			}
 			request.setAttribute("lista", favoritas);
 			rd.forward(request, response);	
 			break;

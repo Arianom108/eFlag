@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import beans.Pelicula;
 import beans.Usuario;
-import modelo.negocio.GestionFavoritas;
 import modelo.negocio.GestionPelicula;
 /**
  * Servlet implementation class RecuperarFavoritos
@@ -22,7 +21,7 @@ import modelo.negocio.GestionPelicula;
 @WebServlet("/RecuperarFavoritos")
 public class RecuperarFavoritos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       GestionFavoritas favoritas ;
+       //GestionFavoritas favoritas ;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -30,7 +29,7 @@ public class RecuperarFavoritos extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
         
-        favoritas = new GestionFavoritas();
+        //favoritas = new GestionFavoritas();
     }
 
 	/**
@@ -51,7 +50,7 @@ public class RecuperarFavoritos extends HttpServlet {
 		}else{
 			Usuario  user=(Usuario)sesion.getAttribute("user");		
 					
-			List <Pelicula> peliculasFavoritas = favoritas.recuperarFavoritas(user);
+			List <Pelicula> peliculasFavoritas = user.getFavoritos();
 			
 			request.setAttribute("peliculasFavoritas", peliculasFavoritas);
 			RequestDispatcher rd = request.getRequestDispatcher("Peliculas.jsp");

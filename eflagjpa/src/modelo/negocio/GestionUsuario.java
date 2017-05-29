@@ -1,5 +1,8 @@
 package modelo.negocio;
 
+import java.util.List;
+
+import beans.Pelicula;
 import beans.Usuario;
 import modelo.DAO.UsuarioDAO;
 
@@ -29,6 +32,10 @@ public class GestionUsuario {
 			return null;
 		}
 
+	}
+	
+	public List<Pelicula> recuperarFavoritas(Usuario usuario){
+		return daoUser.recuperarUsuario(usuario).getFavoritos();
 	}
 
 }

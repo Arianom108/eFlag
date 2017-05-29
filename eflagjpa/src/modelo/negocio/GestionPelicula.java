@@ -4,7 +4,6 @@ import java.util.List;
 
 import beans.Pelicula;
 import beans.Usuario;
-import modelo.DAO.FavoritasDAO;
 import modelo.DAO.PeliculaDAO;
 
 public class GestionPelicula {
@@ -49,8 +48,12 @@ public class GestionPelicula {
 	public boolean votarPelicula(Pelicula p, int numVotos) {
 		daoPeli.iniciarTransaccion();
 		boolean r=daoPeli.votarPelicula(p, numVotos);
-		daoPeli.cerrarConexion();
+		daoPeli.cerrarTransaccion();
 		return r;
+	}
+	
+	public boolean modificarFavoritas(Pelicula p, Usuario user){
+		return daoPeli.modificarFavorita(p, user);
 	}
 
 }

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <title>eFlag</title>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='icon' type='image/png' sizes='16x16' href='image/icon/favicon.ico'>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js '></script>
+    <link href="https://fonts.googleapis.com/css?family=Kanit|Open+Sans+Condensed:300i|Orbitron:500" rel="stylesheet">
+    <link href='css/style.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="container">
+        <div id="headerBg" class="headerBg heigthBg"></div>
+        <div id="header" class="header heigthBg">
+            <div class="header-bar">
+                <div class="logo">
+                    <a href="index.html"><!--<img src="./images/logo_texto.png" width="100%" alt="">-->eFlag</a>
+                </div>
+                <div id="burger" class="burger">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </div>
+                <div id="login" class="login">
+                    <form id="form" action="login" method="post" class="form">
+                        <input type="text" name="user" placeholder="USUARIO" required tabindex="1">
+                        <input type="password" name="password" tabindex="2" placeholder="CONTRASEÑA" required>
+                        <br><input tabindex="3" type="submit" value="ENTRAR">
+
+                    </form><br><a href="registro.html" class="registre">Registrate</a>
+
+                </div>
+            </div>
+            <div id="main" class="header-main">
+                <div class="box">
+                    <h1>MOVIES eFLAG</h1>
+                    <p>las mejores peliculas del mundopeliculas del mundo</p>
+                    <a href="peliculas.html" class="btnMovies">Lista de peliculas</a>
+                    <a href="peliculas.html" class="btnMovies">Crear</a>
+                    <!-- <a href="peliculas.html" class="btnMovies">Lista de peliculas</a>-->
+                </div>
+            </div>
+        </div>
+        <div id="movie" class="movie">
+            <div id="image" class="movie-image">
+
+                <img src="https://i0.fiuxy.com/c8f4f2842b6de4c6055d909eedcf3ee086635762?url=http%3A%2F%2Fsim1.subirimagenes.net%2Fimg%2F2013%2F10%2F07%2F13100709593884535.jpg"
+                    alt="#">
+            </div>
+            <div id="text" class="movie-text">
+                <h2 class="movie-title">Oblivion</h2>
+                <div class="movie-summary">
+                    <p>Año 2073. Hace mas de 60 años la Tierra fue atacada se gano la guerra pero la mitad del planeta quedo
+                        destruido y todos los seres humanos fueron evacuados. Jack Harper - Tom Cruise un antiguo marine
+                        es uno de los ultimos hombres que la habitan. Es un ingeniero de Drones que forma parte de una operacion
+                        masiva para extraer los recursos vitales del planeta. Patrulla diariamente los cielos como parte
+                        de su mision y nada inusual sucede hasta que su vida da un cambio cuando rescata a una desconocida
+                        mujer de una nave espacial. La llegada de esta joven desencadena una serie de acontecimientos que
+                        lo obligan a cuestionar sus convicciones y lo hacen responsable del destino de la humanidad.</p>
+                </div>
+                <ul class="movie-meta">
+                    <li><strong>Calificacion:</strong> 3.75 </li>
+                    <li><strong>Genero:</strong> Animation/Adventure/Comedy</li>
+                    <li><strong>Votos:</strong> 98 votos.</li>
+                    <li><strong>Duracion:</strong> 98 min 22 March 2013 (USA)</li>
+                    <li><strong>Fecha Estreno: </strong>March 2013 </li>
+                </ul>
+
+                <ul class="starring">
+                    <li><strong>Director:</strong> Kirk de Mico (as Kirk DeMico). Chris Sanders</li>
+                    <li><strong>Reparto:</strong> Nicolas Cage, Ryan Reynolds, Emma Stone</li>
+                </ul>
+                <a href="marcar"> <i class="fa fa-star fa-2x isFavorite" aria-hidden="true"></i></a>
+
+            </div>
+        </div>
+        <div class="trailer">
+            <div class="movie-meta"><a href="https://youtu.be/JQWGle-bKmE" class="modal-youtube">Ver Trailer</a></div>
+        </div>
+    </div>
+    <footer id="footer" class="footer">
+        <div class="footer-box">by development <span>&</span> design eFlag 2017</div>
+    </footer>
+
+
+    <!-- FUENTE DE ICONOS DE FONTAWESOME -->
+    <script async type='text/javascript' src='https://use.fontawesome.com/493ef35f7a.js'></script>
+    <!-- HOJA DE JAVASCRIPT -->
+    <script async type='text/javascript' src='js/js.js'></script>
+
+</body>
+
+</html>
